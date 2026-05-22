@@ -1,7 +1,7 @@
 export function Calculator() {
   return (
     <section className="w-full bg-white py-[14px]">
-      <div className="mx-auto flex h-[720px] max-w-[1200px] flex-col items-center justify-center gap-9 px-9">
+      <div className="mx-auto flex h-[720px] max-w-[1200px] flex-col items-center justify-center gap-9 px-5 md:px-9">
         <h2 className="text-h2 max-w-[700px] text-dark">
           A Fundamentally Different Approach to Encrypted Compute
         </h2>

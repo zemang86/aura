@@ -65,7 +65,7 @@ export default function TechnologyPage() {
       <HeroBanner title="Discover Aura's architecture" />
 
       <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-8 px-9 md:grid-cols-4">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-8 px-5 md:px-9 md:grid-cols-4">
           {HERO_STATS.map((s) => (
             <div key={s.label} className="flex flex-col items-center gap-2">
               <span className="font-display text-[40px] font-semibold leading-none tracking-tight text-dark-text md:text-[48px]">
@@ -82,8 +82,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-9">
+      <section className="w-full bg-white py-[48px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-5 md:px-9">
           <h2 className="text-h2 max-w-[900px] text-dark">
             Different mathematics. Unmatched Performance.
           </h2>
@@ -97,8 +97,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-white py-[48px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-5 md:px-9">
           <h2 className="text-h2 max-w-[900px] text-dark">
             Existing FHE cannot run on Solana
           </h2>
@@ -131,8 +131,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">Numbers that matter</p>
           <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
             Engineered for the speed of finance
@@ -141,9 +141,9 @@ export default function TechnologyPage() {
             {BENCHMARKS.map((b) => (
               <li
                 key={b.title}
-                className="flex flex-col gap-4 border border-white/10 bg-elevated p-8"
+                className="flex flex-col gap-4 border border-white/10 bg-elevated p-6 md:p-8"
               >
-                <span className="font-display text-[44px] font-semibold leading-none tracking-tight text-dark-text">
+                <span className="font-display text-[34px] font-semibold leading-none tracking-tight text-dark-text md:text-[44px]">
                   <AnimatedNumber value={b.value} suffix={b.suffix} />
                 </span>
                 <div className="flex flex-col gap-1">
@@ -156,13 +156,13 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white pb-[100px] pt-[100px]">
-        <div className="mx-auto max-w-[1400px] px-9">
+      <section className="w-full bg-white pb-[56px] pt-[56px] md:pb-[100px] md:pt-[100px]">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-9">
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PILLARS.map((p, i) => (
               <li
                 key={p.title}
-                className="flex flex-col gap-4 border border-border-token bg-elevated p-7"
+                className="flex flex-col gap-4 border border-border-token bg-elevated p-5 md:p-7"
               >
                 <span className="font-display text-[14px] font-medium tracking-[0.06em] text-accent-1">
                   {String(i + 1).padStart(2, "0")}
@@ -175,8 +175,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">
             The honest comparison
           </p>
@@ -224,8 +224,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">
             The Coprocessor Model
           </p>
@@ -242,8 +242,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-white py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">For developers</p>
             <h2 className="text-h2 max-w-[700px] text-center text-dark">
@@ -258,7 +258,7 @@ export default function TechnologyPage() {
             </p>
           </div>
 
-          <pre className="w-full max-w-[820px] overflow-x-auto rounded-2xl border border-border-token bg-dark p-8 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.20)]">
+          <pre className="w-full max-w-[820px] overflow-x-auto rounded-2xl border border-border-token bg-dark p-6 md:p-8 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.20)]">
             <code className="font-mono text-p14 leading-relaxed text-dark-text whitespace-pre">
               <span className="text-muted-text">{`// Three primitives. One Solana transaction.`}</span>
               {"\n"}
@@ -278,8 +278,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[80px]">
-        <div className="mx-auto flex max-w-[1128px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-white py-[48px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1128px] flex-col items-center gap-9 px-5 md:px-9">
           <p className="text-h3-24 text-center text-dark">
             Protected by nine patents and validated by twelve years of
             cryptographic research, Aura FHE is a true unicorn in the privacy

@@ -53,7 +53,7 @@ const CHANNELS: Array<{ label: string; href: string; icon: React.ReactNode }> =
 export default function CommunityChannelsPage() {
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto flex min-h-[100vh] max-w-[1400px] flex-col items-center justify-center gap-11 px-9 py-[100px]">
+      <div className="mx-auto flex min-h-[100vh] max-w-[1400px] flex-col items-center justify-center gap-11 px-5 md:px-9 py-[56px] md:py-[100px]">
         <h1 className="text-h2 max-w-[714px] text-center text-dark">
           Our community channels — these are the only official Aura FHE
           channels

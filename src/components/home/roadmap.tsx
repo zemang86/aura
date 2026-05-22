@@ -1,7 +1,7 @@
 export function Roadmap() {
   return (
-    <section className="w-full bg-dark py-[100px]">
-      <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-9">
+    <section className="w-full bg-dark py-[56px] md:py-[100px]">
+      <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
         <h2 className="text-h2 max-w-[700px] text-center text-white">
           The Path to Encrypted Solana
         </h2>

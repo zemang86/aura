@@ -169,7 +169,7 @@ export default function EcosystemPage() {
       />
 
       <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-9">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-5 md:px-9">
           <div className="grid grid-cols-2 gap-y-8 md:grid-cols-4">
             {HERO_STATS.map((s) => (
               <div
@@ -210,8 +210,8 @@ export default function EcosystemPage() {
         or immediately buildable using our current software development kit.
       </TextBlock>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">The landscape</p>
           <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
             What you can build
@@ -236,8 +236,8 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white pb-[100px] pt-[60px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-9">
+      <section className="w-full bg-white pb-[56px] pt-[40px] md:pb-[100px] md:pt-[60px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-5 md:px-9">
           {SECTIONS.map((s) => {
             const isDark = s.surface === "dark";
             return (
@@ -336,8 +336,8 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white pb-[100px]">
-        <div className="mx-auto flex max-w-[900px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-white pb-[56px] md:pb-[100px]">
+        <div className="mx-auto flex max-w-[900px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">FAQ</p>
           <h2 className="text-h2 max-w-[700px] text-left text-dark">
             Common questions
@@ -363,8 +363,8 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">Start shipping</p>
             <h2 className="text-h2 max-w-[700px] text-center text-dark-text">

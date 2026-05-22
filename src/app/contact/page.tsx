@@ -68,8 +68,8 @@ export default function ContactPage() {
         description="Reach out for partnerships, press, or integration questions — or jump into Discord for the fastest response."
       />
 
-      <section className="w-full bg-white py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-white py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">Contact us</p>
             <h2 className="text-h2 max-w-[700px] text-center text-dark">
@@ -87,8 +87,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">Community</p>
             <h2 className="text-h2 max-w-[700px] text-center text-dark-text">

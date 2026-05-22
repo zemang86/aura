@@ -27,7 +27,7 @@ const CARDS: FeatureCard[] = [
 
 export function Features() {
   return (
-    <section className="w-full bg-white py-[103px]">
+    <section className="w-full bg-white py-[56px] md:py-[103px]">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-11 px-[10px]">
         <div className="flex flex-col items-center gap-6 px-6">
           <h2 className="text-h2 max-w-[700px] text-dark">
@@ -52,7 +52,7 @@ export function Features() {
           {CARDS.map((card) => (
             <article
               key={card.title}
-              className="relative flex flex-col gap-6 overflow-hidden bg-elevated p-9"
+              className="relative flex flex-col gap-6 overflow-hidden bg-elevated p-6 md:p-9"
             >
               {card.bg && (
                 <Image

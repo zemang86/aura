@@ -17,7 +17,7 @@ export function Hero() {
         unoptimized
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dark/40 via-transparent to-dark/40" />
-      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-center gap-12 px-9 pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-center gap-12 px-5 md:px-9 pb-20">
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-h1 max-w-[900px] text-dark-text">
             The Encrypted Compute Layer for Solana.
@@ -29,7 +29,7 @@ export function Hero() {
             default. Verifiable by design.
           </p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-5">
+        <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-5">
           <LightButton
             href="https://docs.afhe.io"
             variant="secondary"

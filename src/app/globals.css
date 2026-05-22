@@ -48,7 +48,7 @@ body {
 .text-h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 80px;
+  font-size: clamp(30px, 9vw, 80px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-align: center;
@@ -58,7 +58,7 @@ body {
 .text-h1-404 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 140px;
+  font-size: clamp(80px, 14vw, 140px);
   line-height: 1;
   letter-spacing: -0.04em;
   text-align: center;
@@ -67,7 +67,7 @@ body {
 .text-h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 64px;
+  font-size: clamp(28px, 6vw, 64px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-align: center;
@@ -77,7 +77,7 @@ body {
 .text-h2-52 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 52px;
+  font-size: clamp(32px, 5vw, 52px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-align: center;
@@ -86,7 +86,7 @@ body {
 .text-h3-36 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 36px;
+  font-size: clamp(26px, 3.5vw, 36px);
   line-height: 1.2;
   letter-spacing: -0.03em;
   text-wrap: balance;

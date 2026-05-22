@@ -21,8 +21,8 @@ const LAST_UPDATED = "May 22, 2026";
 
 export function MevLive() {
   return (
-    <section className="w-full bg-dark py-[100px]">
-      <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-12 px-9">
+    <section className="w-full bg-dark py-[56px] md:py-[100px]">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-12 px-5 md:px-9">
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -46,12 +46,12 @@ export function MevLive() {
           {STATS.map((s) => (
             <li
               key={s.label}
-              className="flex flex-col gap-4 border border-white/10 bg-elevated p-8"
+              className="flex flex-col gap-4 border border-white/10 bg-elevated p-6 md:p-8"
             >
               <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-muted-text">
                 {s.label}
               </p>
-              <p className="font-display text-[44px] font-semibold leading-none tracking-tight text-dark-text">
+              <p className="font-display text-[34px] font-semibold leading-none tracking-tight text-dark-text md:text-[44px]">
                 <AnimatedNumber
                   value={s.value}
                   decimals={s.decimals ?? 0}

@@ -72,7 +72,7 @@ export function Process() {
   const next = () => scrollTo(Math.min(COMPONENTS.length - 1, active + 1));
 
   return (
-    <section className="w-full bg-white py-[100px]">
+    <section className="w-full bg-white py-[56px] md:py-[100px]">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-12 px-5">
         <div className="flex flex-col items-center gap-6">
           <h2 className="text-h2 max-w-[700px] text-center text-dark">
@@ -97,7 +97,7 @@ export function Process() {
           {COMPONENTS.map((c) => (
             <article
               key={c.title}
-              className="flex min-w-[85%] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-8 sm:min-w-[60%] md:min-w-[380px]"
+              className="flex min-w-[85%] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-6 md:p-8 sm:min-w-[60%] md:min-w-[380px]"
             >
               <h3 className="text-h3-24 text-dark-text">{c.title}</h3>
               <p className="text-p16 text-muted-text">{c.body}</p>

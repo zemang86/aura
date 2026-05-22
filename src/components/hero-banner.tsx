@@ -32,7 +32,7 @@ export function HeroBanner({
         className="object-cover"
         unoptimized
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-center gap-5 px-9 pb-20 pt-[120px]">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-center gap-5 px-5 md:px-9 pb-20 pt-[80px] md:pt-[120px]">
         {preHeading && (
           <p className="text-pre-heading-16 text-accent-1">{preHeading}</p>
         )}

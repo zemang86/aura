@@ -15,7 +15,7 @@ export default function NotFound() {
         className="object-cover opacity-70"
         unoptimized
       />
-      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-9 py-24">
+      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-5 md:px-9 py-24">
         <div className="flex flex-col items-center gap-5">
           <p className="text-pre-heading-20 text-accent-1">Oops!</p>
           <h1 className="text-h1-404 max-w-[900px] text-dark-text">404</h1>

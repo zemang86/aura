@@ -50,7 +50,7 @@ const SOCIAL_LINKS: Array<{
 
 export function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden bg-dark px-9 pb-9 pt-[120px]">
+    <footer className="relative w-full overflow-hidden bg-dark px-5 md:px-9 pb-9 pt-[80px] md:pt-[120px]">
       <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[574px] w-full max-w-[1400px]">
         <Image
           src={FOOTER_BG}

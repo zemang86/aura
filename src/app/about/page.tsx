@@ -120,7 +120,7 @@ export default function AboutPage() {
       />
 
       <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-9 md:grid-cols-3">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-5 md:px-9 md:grid-cols-3">
           {HERO_STATS.map((s) => (
             <div
               key={s.label}
@@ -137,8 +137,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-white py-[48px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">
             The Glass House Era is Over
           </p>
@@ -165,8 +165,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">Principles</p>
           <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
             What we believe
@@ -175,7 +175,7 @@ export default function AboutPage() {
             {PRINCIPLES.map((p, i) => (
               <li
                 key={p.title}
-                className="flex flex-col gap-3 border border-white/10 bg-elevated p-8"
+                className="flex flex-col gap-3 border border-white/10 bg-elevated p-6 md:p-8"
               >
                 <span className="font-display text-[14px] font-medium tracking-[0.06em] text-accent-1">
                   {String(i + 1).padStart(2, "0")}
@@ -188,8 +188,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-white py-[48px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">
             Architects of the Encrypted Future
           </p>
@@ -210,8 +210,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-9">
+      <section className="w-full bg-dark py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">Community</p>
             <h2 className="text-h2 max-w-[700px] text-center text-dark-text">
@@ -250,8 +250,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-9">
+      <section className="w-full bg-white py-[56px] md:py-[100px]">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
           <div className="flex flex-col items-center gap-6">
             <p className="text-pre-heading-16 text-accent-1">
               Building on Aura?
@@ -272,8 +272,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white pb-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+      <section className="w-full bg-white pb-[56px] md:pb-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
           <p className="text-pre-heading-16 text-accent-1">Keep exploring</p>
           <h2 className="text-h2 max-w-[700px] text-left text-dark">
             Where to next

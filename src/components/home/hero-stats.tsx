@@ -24,7 +24,7 @@ const STATS = [
 export function HeroStats() {
   return (
     <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-9 md:grid-cols-3">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-5 md:px-9 md:grid-cols-3">
         {STATS.map((s) => (
           <div
             key={s.label}

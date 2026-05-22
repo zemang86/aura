@@ -17,7 +17,7 @@ const base =
 const variants: Record<Variant, string> = {
   main: "bg-dark text-dark-text hover:opacity-80",
   secondary:
-    "bg-transparent text-dark-text border border-border-token hover:bg-dark hover:border-dark",
+    "bg-transparent text-dark border border-dark/20 hover:bg-dark hover:text-dark-text hover:border-dark",
 };
 
 export function DarkButton({

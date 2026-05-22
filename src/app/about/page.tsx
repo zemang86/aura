@@ -3,12 +3,62 @@ import Link from "next/link";
 import { HeroBanner } from "@/components/hero-banner";
 import { LightButton } from "@/components/light-button";
 import { SubmitAppForm } from "@/components/submit-app-form";
+import { AnimatedNumber } from "@/components/animated-number";
 
 export const metadata: Metadata = {
   title: "About Aura FHE | Built by Mochi Labs",
   description:
     "Aura FHE is the encrypted compute layer for the Solana Virtual Machine, built by Mochi Labs on more than a decade of cryptographic research to end the Glass House era of on-chain transparency.",
 };
+
+const HERO_STATS = [
+  {
+    value: 12,
+    suffix: "+",
+    label: "Years of cryptographic research",
+  },
+  {
+    value: 20,
+    suffix: "+",
+    label: "Dedicated engineering experts",
+  },
+  {
+    value: 9,
+    label: "Patents protect the protocol",
+  },
+];
+
+const PRINCIPLES = [
+  {
+    title: "Math, not policy",
+    body: "Privacy comes from cryptographic proofs, not access controls or institutional promises.",
+  },
+  {
+    title: "Privacy by default",
+    body: "Confidentiality is the baseline state of every computation, not an opt-in feature.",
+  },
+  {
+    title: "Verifiable by design",
+    body: "Every encrypted operation produces a proof of correctness verifiable on-chain.",
+  },
+  {
+    title: "Solana-native speed",
+    body: "FHE that runs at the 400ms block target, not at the minute.",
+  },
+];
+
+const NEXT_STEPS = [
+  {
+    title: "Technology",
+    body: "Discover how LUT-FHE delivers encrypted computation at Solana speed.",
+    href: "/technology",
+  },
+  {
+    title: "Ecosystem",
+    body: "See the applications already shipping on the encrypted compute layer.",
+    href: "/ecosystem",
+  },
+];
 
 const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
   {
@@ -64,9 +114,30 @@ const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
 export default function AboutPage() {
   return (
     <>
-      <HeroBanner title="Who we are and what we're building" />
+      <HeroBanner
+        title="Who we are and what we're building"
+        description="Built by Mochi Labs and a decade of cryptographic research. Singapore-headquartered, globally distributed, deeply technical."
+      />
 
-      <section className="w-full bg-white py-[60px]">
+      <section className="w-full border-t border-b border-white/10 bg-dark py-10">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-9 md:grid-cols-3">
+          {HERO_STATS.map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center gap-2 text-center"
+            >
+              <span className="font-display text-[40px] font-semibold leading-none tracking-tight text-dark-text md:text-[48px]">
+                <AnimatedNumber value={s.value} suffix={s.suffix} />
+              </span>
+              <span className="text-p14 max-w-[260px] text-muted-text">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="w-full bg-white py-[80px]">
         <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
           <p className="text-pre-heading-16 text-accent-1">
             The Glass House Era is Over
@@ -94,7 +165,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-[60px]">
+      <section className="w-full bg-dark py-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+          <p className="text-pre-heading-16 text-accent-1">Principles</p>
+          <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
+            What we believe
+          </h2>
+          <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+            {PRINCIPLES.map((p, i) => (
+              <li
+                key={p.title}
+                className="flex flex-col gap-3 border border-white/10 bg-elevated p-8"
+              >
+                <span className="font-display text-[14px] font-medium tracking-[0.06em] text-accent-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-h4 text-dark-text">{p.title}</h3>
+                <p className="text-p16 text-muted-text">{p.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="w-full bg-white py-[80px]">
         <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
           <p className="text-pre-heading-16 text-accent-1">
             Architects of the Encrypted Future
@@ -175,6 +269,33 @@ export default function AboutPage() {
           <div className="w-full max-w-[900px] overflow-hidden rounded-3xl border border-dark/10 bg-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.08)]">
             <SubmitAppForm />
           </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-white pb-[100px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
+          <p className="text-pre-heading-16 text-accent-1">Keep exploring</p>
+          <h2 className="text-h2 max-w-[700px] text-left text-dark">
+            Where to next
+          </h2>
+          <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+            {NEXT_STEPS.map((n) => (
+              <li key={n.href}>
+                <Link
+                  href={n.href}
+                  className="group flex h-full flex-col gap-4 rounded-3xl border border-dark/10 bg-white p-10 transition-all hover:-translate-y-1 hover:border-dark/20 hover:shadow-[0_16px_36px_-8px_rgba(0,0,0,0.10)]"
+                >
+                  <h3 className="text-h3-36 text-dark transition-colors group-hover:text-accent-1">
+                    {n.title}
+                  </h3>
+                  <p className="text-p16 text-dark/70">{n.body}</p>
+                  <span className="text-pre-heading-16 text-accent-1">
+                    Read more →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

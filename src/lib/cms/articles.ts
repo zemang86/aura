@@ -8,20 +8,39 @@ export type Article = {
   date: string;
   image: string | null;
   html: string;
+  description: string;
 };
 
 const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
+
+function deriveDescription(html: string, explicit?: string): string {
+  if (explicit) return explicit;
+  const firstParagraph = html.match(/<p[^>]*>([\s\S]*?)<\/p>/i)?.[1] ?? "";
+  const text = firstParagraph
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+  if (text.length <= 160) return text;
+  return text.slice(0, 157).trimEnd() + "…";
+}
 
 async function readArticleFile(filename: string): Promise<Article> {
   const slug = filename.replace(/\.md$/, "");
   const raw = await fs.readFile(path.join(ARTICLES_DIR, filename), "utf8");
   const { data, content } = matter(raw);
+  const html = content.trim();
   return {
     slug,
     title: String(data.title ?? slug),
     date: String(data.date ?? ""),
     image: data.image ? String(data.image) : null,
-    html: content.trim(),
+    html,
+    description: deriveDescription(html, data.description ? String(data.description) : undefined),
   };
 }
 

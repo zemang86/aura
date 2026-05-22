@@ -18,10 +18,29 @@ const display = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "AFHE",
+  title: {
+    default: "AFHE — Privacy Infrastructure for the Post-Quantum Era",
+    template: "%s · AFHE",
+  },
   description:
-    "A foundation for human evolution — porting AFHE from Framer to Next.js.",
-  metadataBase: new URL("https://www.afhe.io"),
+    "AFHE enables computation on encrypted data without decryption. 100x faster than existing FHE solutions, post-quantum secure, and built for private DeFi on Solana.",
+  metadataBase: new URL("https://afhe.io"),
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "AFHE",
+    url: "https://afhe.io",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@AfheLabs",
+    creator: "@AfheLabs",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export default function RootLayout({

@@ -206,3 +206,72 @@ export const allSchemas = [
   softwareSchema,
   faqSchema,
 ];
+
+export type ArticleSchemaInput = {
+  slug: string;
+  title: string;
+  date: string;
+  image: string | null;
+  description: string;
+};
+
+export function buildArticleSchema(article: ArticleSchemaInput) {
+  const url = `${SITE_URL}/blog/${article.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.date,
+    dateModified: article.date,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    image: article.image ? [article.image] : [LOGO_URL],
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${SITE_URL}/blog#blog` },
+  };
+}
+
+export function buildBreadcrumbSchema(
+  items: { name: string; url: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function buildBlogSchema(
+  articles: { slug: string; title: string; date: string; description: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE_URL}/blog#blog`,
+    url: `${SITE_URL}/blog`,
+    name: `${SITE_NAME} Blog`,
+    description:
+      "Engineering notes on fully homomorphic encryption, private DeFi, and the cryptography behind Aura.",
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en-US",
+    blogPost: articles.map((article) => ({
+      "@type": "BlogPosting",
+      "@id": `${SITE_URL}/blog/${article.slug}#article`,
+      headline: article.title,
+      description: article.description,
+      datePublished: article.date,
+      url: `${SITE_URL}/blog/${article.slug}`,
+    })),
+  };
+}
+
+export { SITE_URL, SITE_NAME };

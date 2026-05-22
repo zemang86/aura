@@ -5,6 +5,11 @@ import {
   getAllArticleSlugs,
   getArticleBySlug,
 } from "@/lib/cms/articles";
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  SITE_URL,
+} from "@/lib/seo/structured-data";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -25,9 +30,30 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return {};
+  const url = `${SITE_URL}/blog/${article.slug}`;
+  const images = article.image ? [article.image] : [];
   return {
     title: `${article.title} · AFHE`,
-    openGraph: { images: article.image ? [article.image] : [] },
+    description: article.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description: article.description,
+      publishedTime: article.date,
+      modifiedTime: article.date,
+      images,
+      siteName: "AFHE",
+    },
+    twitter: {
+      card: images.length ? "summary_large_image" : "summary",
+      title: article.title,
+      description: article.description,
+      images,
+      site: "@AfheLabs",
+      creator: "@AfheLabs",
+    },
   };
 }
 
@@ -40,8 +66,23 @@ export default async function ArticlePage({
   const article = await getArticleBySlug(slug);
   if (!article) notFound();
 
+  const articleSchema = buildArticleSchema(article);
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Blog", url: `${SITE_URL}/blog` },
+    { name: article.title, url: `${SITE_URL}/blog/${article.slug}` },
+  ]);
+
   return (
     <main className="flex-1 px-6 py-24 sm:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="mx-auto max-w-3xl">
         <Link
           href="/blog"

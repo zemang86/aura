@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { HeroBanner } from "@/components/hero-banner";
-import { TextBlock } from "@/components/text-block";
 import { DarkButton } from "@/components/dark-button";
 import { AnimatedNumber } from "@/components/animated-number";
 
@@ -83,20 +82,27 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <TextBlock preHeading="Different mathematics. Unmatched Performance.">
-        Aura is the only protocol in the industry capable of delivering FHE at
-        the speed of a modern blockchain. Aura FHE has abandoned legacy methods
-        to create a fundamentally different mathematical approach, resulting in
-        an architecture that no other project in the Web3 space has
-        successfully achieved.
-      </TextBlock>
-
-      <section className="w-full bg-white py-[60px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-9">
-          <p className="text-pre-heading-16 text-accent-1">
-            Existing FHE cannot run on Solana
+      <section className="w-full bg-white py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-9">
+          <h2 className="text-h2 max-w-[900px] text-dark">
+            Different mathematics. Unmatched Performance.
+          </h2>
+          <p className="text-p16 max-w-[700px] text-center text-dark/80">
+            Aura is the only protocol in the industry capable of delivering FHE
+            at the speed of a modern blockchain. Aura FHE has abandoned legacy
+            methods to create a fundamentally different mathematical approach,
+            resulting in an architecture that no other project in the Web3
+            space has successfully achieved.
           </p>
-          <div className="flex max-w-[1128px] flex-col gap-6 text-p16 text-dark/80">
+        </div>
+      </section>
+
+      <section className="w-full bg-white py-[80px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-9">
+          <h2 className="text-h2 max-w-[900px] text-dark">
+            Existing FHE cannot run on Solana
+          </h2>
+          <div className="flex w-full max-w-[760px] flex-col gap-6 text-p16 text-dark/80">
             <p>
               Lattice-based FHE schemes require a time-consuming refresh
               process called bootstrapping that creates a structural
@@ -110,7 +116,12 @@ export default function TechnologyPage() {
               tens of milliseconds per gate. A 400ms Solana block cannot
               accommodate this.
             </p>
-            <p>
+          </div>
+          <div className="flex w-full max-w-[760px] flex-col gap-2 border-l-2 border-accent-1 pl-6">
+            <p className="text-pre-heading-16 text-left text-accent-1">
+              The Aura answer
+            </p>
+            <p className="text-p16 text-dark">
               AURA FHE abandons lattice-based FHE entirely and solves this
               speed-to-privacy mismatch by replacing ring-based ciphertext
               arithmetic with precomputed lookup tables, known as LUT-FHE,

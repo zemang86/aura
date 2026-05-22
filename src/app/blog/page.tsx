@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllArticles } from "@/lib/cms/articles";
+import { buildBlogSchema, SITE_URL } from "@/lib/seo/structured-data";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -8,15 +9,38 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
 });
 
+const BLOG_DESCRIPTION =
+  "Engineering notes on fully homomorphic encryption, private DeFi, and the cryptography behind Aura.";
+
 export const metadata = {
   title: "Blog · AFHE",
+  description: BLOG_DESCRIPTION,
+  alternates: { canonical: `${SITE_URL}/blog` },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/blog`,
+    title: "AFHE Blog — Engineering notes on FHE and private DeFi",
+    description: BLOG_DESCRIPTION,
+    siteName: "AFHE",
+  },
+  twitter: {
+    card: "summary",
+    title: "AFHE Blog",
+    description: BLOG_DESCRIPTION,
+    site: "@AfheLabs",
+  },
 };
 
 export default async function BlogPage() {
   const articles = await getAllArticles();
+  const blogSchema = buildBlogSchema(articles);
 
   return (
     <main className="flex-1 px-6 py-24 sm:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <div className="mx-auto max-w-5xl">
         <header className="mb-16 text-center space-y-4">
           <p className="text-pre-heading-16 text-accent-1">/blog</p>

@@ -3,6 +3,7 @@ import { Hero } from "@/components/home/hero";
 import { HeroStats } from "@/components/home/hero-stats";
 import { DisclaimerBanner } from "@/components/home/disclaimer-banner";
 import { Features } from "@/components/home/features";
+import { MevLive } from "@/components/home/mev-live";
 import { Process } from "@/components/home/process";
 import { Industries } from "@/components/home/industries";
 import { Roadmap } from "@/components/home/roadmap";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <HeroStats />
       <DisclaimerBanner />
       <Features />
+      <MevLive />
       <Process />
       <Industries />
       <Roadmap />

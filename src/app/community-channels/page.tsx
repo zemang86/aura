@@ -26,7 +26,7 @@ const CHANNELS: Array<{ label: string; href: string; icon: React.ReactNode }> =
     },
     {
       label: "Discord",
-      href: "https://discord.gg/QJEQ8BUuRP",
+      href: "https://discord.gg/afhe",
       icon: (
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-7 w-7">
           <path

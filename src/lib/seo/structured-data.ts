@@ -10,9 +10,9 @@ const SITE_NAME = "AFHE";
 const DESCRIPTION =
   "Privacy Infrastructure for the Post-Quantum Era. AFHE enables computation on encrypted data without decryption, 100x faster than existing FHE solutions.";
 const LOGO_URL = "https://afhe.io/logo.png";
-const TWITTER_HANDLE = "AuraFHE";
+const TWITTER_HANDLE = "AfheLabs";
 const LINKEDIN_URL = "https://www.linkedin.com/company/aura-fhe";
-const DISCORD_URL = "https://discord.gg/QJEQ8BUuRP";
+const DISCORD_URL = "https://discord.gg/afhe";
 
 export const organizationSchema = {
   "@context": "https://schema.org",

@@ -36,7 +36,7 @@ const SOCIAL_LINKS: Array<{
   },
   {
     label: "Discord",
-    href: "https://discord.gg/QJEQ8BUuRP",
+    href: "https://discord.gg/afhe",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[18px] w-[18px]">
         <path

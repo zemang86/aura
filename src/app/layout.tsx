@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { allSchemas } from "@/lib/seo/structured-data";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,10 +11,10 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const displayFallback = Instrument_Serif({
-  variable: "--font-display-fallback",
+const display = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${displayFallback.variable} h-full`}
+      className={`${inter.variable} ${display.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
         {allSchemas.map((schema, i) => (
@@ -38,7 +40,9 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
-        {children}
+        <Navigation />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

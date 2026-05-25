@@ -10,7 +10,6 @@ import { Process } from "@/components/home/process";
 // Marketing-v2 sections (dark editorial brand)
 import { Spec } from "@/components/marketing/spec";
 import { CaseGrid } from "@/components/marketing/case-grid";
-import { Roadmap } from "@/components/marketing/roadmap";
 import { Capabilities } from "@/components/marketing/capabilities";
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function HomePage() {
 
       {/* ---- MARKETING-V2 SECTIONS ---- */}
       <CaseGrid />
-      <Roadmap />
       <Capabilities />
     </>
   );

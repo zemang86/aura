@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 const CASE_ART: Record<string, ReactNode> = {
   dex: (
-    <svg className="art-svg" viewBox="0 0 200 100">
+    <svg className="art-svg art-dex" viewBox="0 0 200 100">
       <g stroke="rgba(232,226,212,.32)" strokeWidth="1" fill="none">
         <line x1="20" y1="50" x2="180" y2="50" />
         <line x1="20" y1="30" x2="180" y2="30" strokeDasharray="2 4" />
@@ -46,12 +46,12 @@ const CASE_ART: Record<string, ReactNode> = {
     </svg>
   ),
   amm: (
-    <svg className="art-svg" viewBox="0 0 200 100">
+    <svg className="art-svg art-amm" viewBox="0 0 200 100">
       <g fill="none" stroke="rgba(232,226,212,.3)" strokeWidth="1">
         <path d="M 20 80 Q 100 20 180 80" />
         <path d="M 20 80 Q 100 40 180 80" strokeDasharray="3 3" />
       </g>
-      <circle cx="100" cy="50" r="3" fill="#FF6B3D" />
+      <circle cx="100" cy="50" r="3" fill="#FF6B3D" className="amm-core" />
       <circle
         cx="100"
         cy="50"
@@ -60,6 +60,7 @@ const CASE_ART: Record<string, ReactNode> = {
         stroke="#FF6B3D"
         strokeWidth="1"
         opacity=".6"
+        className="amm-ring amm-ring-1"
       />
       <circle
         cx="100"
@@ -69,6 +70,7 @@ const CASE_ART: Record<string, ReactNode> = {
         stroke="#FF6B3D"
         strokeWidth=".6"
         opacity=".3"
+        className="amm-ring amm-ring-2"
       />
       <g
         fill="rgba(232,226,212,.6)"
@@ -89,12 +91,20 @@ const CASE_ART: Record<string, ReactNode> = {
     </svg>
   ),
   lending: (
-    <svg className="art-svg" viewBox="0 0 200 100">
+    <svg className="art-svg art-lending" viewBox="0 0 200 100">
       <g fill="none" stroke="rgba(232,226,212,.3)" strokeWidth="1">
         <rect x="40" y="32" width="56" height="44" />
         <rect x="104" y="32" width="56" height="44" />
       </g>
-      <rect x="44" y="62" width="48" height="10" fill="#FF6B3D" opacity=".85" />
+      <rect
+        x="44"
+        y="62"
+        width="48"
+        height="10"
+        fill="#FF6B3D"
+        opacity=".85"
+        className="col-l"
+      />
       <rect
         x="108"
         y="60"
@@ -102,6 +112,7 @@ const CASE_ART: Record<string, ReactNode> = {
         height="12"
         fill="#2DD49A"
         opacity=".85"
+        className="col-r"
       />
       <text
         x="68"
@@ -139,8 +150,8 @@ const CASE_ART: Record<string, ReactNode> = {
     </svg>
   ),
   gov: (
-    <svg className="art-svg" viewBox="0 0 200 100">
-      <g fill="rgba(232,226,212,.3)">
+    <svg className="art-svg art-gov" viewBox="0 0 200 100">
+      <g fill="rgba(232,226,212,.3)" className="gov-tallies">
         {[
           [32, 36, 40],
           [52, 44, 32],
@@ -153,7 +164,14 @@ const CASE_ART: Record<string, ReactNode> = {
           <rect key={i} x={x} y={y} width="8" height={h} />
         ))}
       </g>
-      <rect x="72" y="30" width="8" height="46" fill="#FF6B3D" />
+      <rect
+        x="72"
+        y="30"
+        width="8"
+        height="46"
+        fill="#FF6B3D"
+        className="gov-winner"
+      />
       <text
         x="100"
         y="92"
@@ -168,15 +186,16 @@ const CASE_ART: Record<string, ReactNode> = {
     </svg>
   ),
   bridge: (
-    <svg className="art-svg" viewBox="0 0 200 100">
+    <svg className="art-svg art-bridge" viewBox="0 0 200 100">
       <g fill="none" stroke="rgba(232,226,212,.3)" strokeWidth="1">
-        <circle cx="40" cy="50" r="14" />
-        <circle cx="160" cy="50" r="14" />
+        <circle cx="40" cy="50" r="14" className="bridge-node bridge-a" />
+        <circle cx="160" cy="50" r="14" className="bridge-node bridge-b" />
         <path
           d="M 54 50 L 146 50"
           stroke="#FF6B3D"
           strokeWidth="1.5"
           strokeDasharray="4 4"
+          className="bridge-flow"
         />
       </g>
       <text
@@ -226,7 +245,7 @@ const CASE_ART: Record<string, ReactNode> = {
     </svg>
   ),
   ai: (
-    <svg className="art-svg" viewBox="0 0 200 100">
+    <svg className="art-svg art-ai" viewBox="0 0 200 100">
       <g fill="none" stroke="rgba(232,226,212,.3)" strokeWidth="1">
         <circle cx="40" cy="50" r="4" />
         <circle cx="40" cy="30" r="4" />

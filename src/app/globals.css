@@ -1545,6 +1545,144 @@ body {
   opacity: 0.8;
 }
 
+/* ------------------------------------------------------------------
+ * Case-grid art animations — subtle CSS loops on each diagram.
+ * All shape elements use transform-box: fill-box + transform-origin
+ * so scales happen relative to each SVG element's own center.
+ * Respect prefers-reduced-motion.
+ * ------------------------------------------------------------------ */
+.art-svg [class^="art-"] rect,
+.art-svg [class^="art-"] circle,
+.art-svg [class^="art-"] line,
+.art-svg [class^="art-"] path,
+.art-dex rect,
+.art-amm circle,
+.art-amm path,
+.art-lending rect,
+.art-gov rect,
+.art-bridge circle,
+.art-bridge path,
+.art-ai circle,
+.art-ai line {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* DEX — ticker bars bob in a staggered rhythm */
+@keyframes art-ticker {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-2px) scaleY(1.15); }
+}
+.art-dex g[fill] rect {
+  animation: art-ticker 2.6s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+.art-dex g[fill] rect:nth-child(1) { animation-delay: 0s; }
+.art-dex g[fill] rect:nth-child(2) { animation-delay: 0.15s; }
+.art-dex g[fill] rect:nth-child(3) { animation-delay: 0.3s; }
+.art-dex g[fill] rect:nth-child(4) { animation-delay: 0.45s; }
+.art-dex g[fill] rect:nth-child(5) { animation-delay: 0.6s; }
+.art-dex g[fill] rect:nth-child(6) { animation-delay: 0.75s; }
+
+/* AMM — concentric rings pulse outward; core dot breathes */
+@keyframes art-amm-ring {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  60% { transform: scale(1.15); opacity: 0.12; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+.art-amm .amm-ring-1 {
+  animation: art-amm-ring 2.6s ease-out infinite;
+}
+.art-amm .amm-ring-2 {
+  animation: art-amm-ring 2.6s ease-out infinite 1.3s;
+}
+@keyframes art-amm-core {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+.art-amm .amm-core {
+  animation: art-amm-core 2.6s ease-in-out infinite;
+}
+
+/* LENDING — collateral / borrow bars trade weight in opposition */
+@keyframes art-lend-l {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.78); }
+}
+@keyframes art-lend-r {
+  0%, 100% { transform: scaleX(0.78); }
+  50% { transform: scaleX(1); }
+}
+.art-lending .col-l {
+  animation: art-lend-l 3.4s ease-in-out infinite;
+  transform-origin: left center;
+}
+.art-lending .col-r {
+  animation: art-lend-r 3.4s ease-in-out infinite;
+  transform-origin: right center;
+}
+
+/* GOV — winning ballot tally pulses; surrounding bars hold still */
+@keyframes art-gov {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.12); }
+}
+.art-gov .gov-winner {
+  animation: art-gov 2.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* BRIDGE — encrypted value flows left → right via stroke-dashoffset */
+@keyframes art-bridge-flow {
+  to { stroke-dashoffset: -16; }
+}
+.art-bridge .bridge-flow {
+  animation: art-bridge-flow 1.2s linear infinite;
+}
+@keyframes art-bridge-node {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.7; }
+}
+.art-bridge .bridge-a {
+  animation: art-bridge-node 2.4s ease-in-out infinite;
+}
+.art-bridge .bridge-b {
+  animation: art-bridge-node 2.4s ease-in-out infinite 1.2s;
+}
+
+/* AI — network connections breathe in sequence */
+@keyframes art-ai-line {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.95; }
+}
+.art-ai g line {
+  stroke: rgba(255, 107, 61, 0.6);
+  animation: art-ai-line 2.6s ease-in-out infinite;
+}
+.art-ai g line:nth-of-type(1) { animation-delay: 0s; }
+.art-ai g line:nth-of-type(2) { animation-delay: 0.2s; }
+.art-ai g line:nth-of-type(3) { animation-delay: 0.4s; }
+.art-ai g line:nth-of-type(4) { animation-delay: 0.6s; }
+.art-ai g line:nth-of-type(5) { animation-delay: 0.8s; }
+.art-ai g line:nth-of-type(6) { animation-delay: 1s; }
+
+/* Disable everything for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .art-dex g[fill] rect,
+  .art-amm .amm-ring-1,
+  .art-amm .amm-ring-2,
+  .art-amm .amm-core,
+  .art-lending .col-l,
+  .art-lending .col-r,
+  .art-gov .gov-winner,
+  .art-bridge .bridge-flow,
+  .art-bridge .bridge-a,
+  .art-bridge .bridge-b,
+  .art-ai g line {
+    animation: none !important;
+  }
+}
+
 /* ROADMAP */
 .m-roadmap {
   padding: 120px 24px 100px;
@@ -1977,6 +2115,46 @@ body.marketing-v2 a {
   text-decoration: none;
 }
 
+/* ------------------------------------------------------------------
+ * Italic accent disabled — design system <em> words keep their coral
+ * color but render in the regular marketing sans, not Fraunces italic.
+ * Scoped to the brand-system selectors so generic em inside blog prose
+ * is unaffected.
+ * ------------------------------------------------------------------ */
+.t-display em,
+.t-h2 em,
+.t-h3 em,
+.t-h4 em,
+.t-foot em,
+.page-hero h1 em,
+.m-section-head h2 em,
+.m-prose em,
+.cta-block h2 em,
+.spec h2 em,
+.mega-display h1 em,
+.cases-head h2 em,
+.caps-head h2 em,
+.refs-head h2 em,
+.ref h3 em,
+.foot-display em,
+.m-404 .num em,
+.cover-tagline em,
+.feature-card h3 em,
+.next-row h3 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  font-variation-settings: normal;
+  letter-spacing: inherit;
+}
+
+/* Pull-quote — drop the Fraunces italic; keep the coral left border. */
+.m-prose .pull {
+  font-family: var(--m-sans);
+  font-style: normal;
+  font-variation-settings: normal;
+}
+
 /* ============================================================
  * Inner-page primitives (Technology / Ecosystem / About / etc.)
  * Shared by every non-home page that uses the marketing-v2 system.
@@ -2061,6 +2239,32 @@ body.marketing-v2 a {
 }
 .m-section.bare {
   border-top: none;
+}
+/* Light-surface modifier — paper background with dark text. Use sparingly
+ * when a section needs to break the dark editorial rhythm (video demos,
+ * brand statements, etc). */
+.m-section.light {
+  background: var(--paper);
+  border-top-color: rgba(10, 10, 11, 0.08);
+  /* Full-bleed background — the inner .m-section-inner stays at 1280
+   * centered, so content lines up with other (non-light) sections while
+   * the paper bg spans the viewport. */
+  max-width: none;
+}
+.m-section.light .m-section-head h2 {
+  color: var(--ink);
+}
+.m-section.light .m-section-head h2 em {
+  color: var(--coral);
+}
+.m-section.light .m-section-head .right {
+  color: rgba(10, 10, 11, 0.6);
+}
+.m-section.light .m-prose {
+  color: rgba(10, 10, 11, 0.75);
+}
+.m-section.light .m-prose em {
+  color: var(--ink);
 }
 .m-section-inner {
   max-width: 1280px;

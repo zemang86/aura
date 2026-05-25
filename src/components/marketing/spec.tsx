@@ -3,8 +3,7 @@ export function Spec() {
     <section className="spec" style={{ gridTemplateColumns: "1fr", gap: 0 }}>
       <div>
         <h2>
-          Aura specializes in <em>fully homomorphic encryption</em>, encrypted
-          execution, and protocol-level privacy for financial systems.
+          What the protocol <em>actually</em> does.
         </h2>
         <div className="spec-deck">
           <p>

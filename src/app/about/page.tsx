@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SubmitAppForm } from "@/components/submit-app-form";
+import { Roadmap } from "@/components/marketing/roadmap";
 
 export const metadata: Metadata = {
   title: "About Aura FHE | Built by Mochi Labs",
@@ -209,6 +210,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <Roadmap />
 
       <section className="m-section">
         <div className="m-section-inner">

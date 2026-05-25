@@ -56,15 +56,20 @@ link must opt into a class (`m-btn-*`, `m-link-inline`, `soc-ring`, etc).
 | `.t-meta`        | Mono caps labels (10.5px, 0.22em tracking) | mono     |
 | `.t-meta-sm`     | Smaller meta                               | mono     |
 
-**Editorial italic.** Inside `.t-display`, `.t-h2`, `.t-h3`, `.t-h4`,
-`.page-hero h1`, `.m-section-head h2`, `.cta-block h2`, `.foot-display`, and
-`.feature-card h3` — wrapping a word in `<em>` switches it to Fraunces italic
-with `font-variation-settings: "opsz" 144` and recolors it `--coral`. This is
-the brand's signature gesture; use it on one word per headline.
+**Coral accent.** Inside `.t-display`, `.t-h2`, `.t-h3`, `.t-h4`,
+`.page-hero h1`, `.m-section-head h2`, `.cta-block h2`, `.foot-display`,
+`.feature-card h3`, etc. — wrapping a word in `<em>` recolors it `--coral`.
+The Fraunces serif italic that used to apply has been disabled; em words now
+render in the regular sans (inheriting parent weight + letter-spacing) and
+stand out by color alone. Use on one word per headline.
 
 ```jsx
 <h1>Discover Aura's <em>architecture.</em></h1>
 ```
+
+Note: the `em` override is scoped to design-system selectors only — generic
+`<em>` inside blog prose (`.prose-article`) still renders italic per the
+default user-agent behavior.
 
 ---
 

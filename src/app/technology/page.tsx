@@ -94,6 +94,50 @@ export default function TechnologyPage() {
               build something no other Web3 project has shipped.
             </div>
           </div>
+
+          <div className="cmp-wrap">
+            <table className="cmp-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Existing FHE solutions</th>
+                  <th className="us">AFHE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="label">Verification time</td>
+                  <td>10+ seconds</td>
+                  <td className="us">~0.1 seconds</td>
+                </tr>
+                <tr>
+                  <td className="label">Bootstrapping</td>
+                  <td>Required (slow &amp; expensive)</td>
+                  <td className="us">Eliminated entirely</td>
+                </tr>
+                <tr>
+                  <td className="label">Hardware requirements</td>
+                  <td>Enterprise GPU / ASIC clusters</td>
+                  <td className="us">Consumer-grade devices</td>
+                </tr>
+                <tr>
+                  <td className="label">Integration</td>
+                  <td>Chain-level changes required</td>
+                  <td className="us">Application-layer — no validator changes</td>
+                </tr>
+                <tr>
+                  <td className="label">Quantum security</td>
+                  <td>LWE (believed hard)</td>
+                  <td className="us">MQ (proven NP-hard)</td>
+                </tr>
+                <tr>
+                  <td className="label">Trust model</td>
+                  <td>Threshold committees</td>
+                  <td className="us">True end-to-end encryption</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -126,29 +170,9 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="m-section">
-        <div className="m-section-inner">
-          <div className="m-section-head">
-            <h2>
-              Engineered for the <em>speed</em> of finance.
-            </h2>
-            <div className="right">
-              Numbers that matter, measured against the production state of the
-              art.
-            </div>
-          </div>
-
-          <div className="principle-grid">
-            {BENCHMARKS.map((b) => (
-              <div key={b.title} className="principle">
-                <div className="principle-num">{b.value}</div>
-                <h3>{b.title}</h3>
-                <p>{b.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* "Engineered for the speed of finance" benchmarks section hidden
+       * for now. BENCHMARKS data above is kept; restore the <section>
+       * block here to bring it back. */}
 
       <section className="m-section">
         <div className="m-section-inner">
@@ -176,43 +200,38 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="m-section">
+      {/* Head-to-head comparison table hidden for now — kept in source for
+       * later. Restore the <section> block + COMPARISON data above to bring
+       * it back. */}
+
+      <section className="m-section light">
         <div className="m-section-inner">
           <div className="m-section-head">
             <h2>
-              Head-to-head against the <em>field.</em>
+              Encrypted compute at <em>speed.</em>
             </h2>
             <div className="right">
-              The honest comparison. Numbers from each project&rsquo;s public
-              documentation, normalized to the same hardware envelope.
+              No bootstrapping, no GPU clusters, no trust assumptions — just
+              the math, running at Solana block time.
             </div>
           </div>
 
-          <div className="cmp-wrap">
-            <table className="cmp-table">
-              <thead>
-                <tr>
-                  <th />
-                  {COMPARISON.cols.map((c, i) => (
-                    <th key={c} className={i === 0 ? "us" : ""}>
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON.rows.map((r) => (
-                  <tr key={r.label}>
-                    <td className="label">{r.label}</td>
-                    {r.values.map((v, i) => (
-                      <td key={i} className={i === 0 ? "us" : ""}>
-                        {v}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div
+            style={{
+              border: "1px solid rgba(10, 10, 11, 0.08)",
+              overflow: "hidden",
+              background: "rgba(10, 10, 11, 0.03)",
+            }}
+          >
+            <video
+              src="/videos/afhe-speed.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
           </div>
         </div>
       </section>

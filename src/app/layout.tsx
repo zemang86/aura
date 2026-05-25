@@ -1,20 +1,34 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, Fraunces, JetBrains_Mono } from "next/font/google";
 import { allSchemas } from "@/lib/seo/structured-data";
-import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import { BodyClass } from "@/components/marketing/body-class";
+import { HUD } from "@/components/marketing/hud";
+import { MarketingFooter } from "@/components/marketing/marketing-footer";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const display = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const serifItalic = Fraunces({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  style: ["italic"],
+  axes: ["opsz"],
+});
+
+const monoFace = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -49,9 +63,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${display.variable} h-full`}
+      className={`${inter.variable} ${display.variable} ${serifItalic.variable} ${monoFace.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
+        <BodyClass className="marketing-v2" />
+        <div className="grain" aria-hidden="true" />
         {allSchemas.map((schema, i) => (
           <script
             key={i}
@@ -59,9 +75,9 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
-        <Navigation />
+        <HUD />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <MarketingFooter />
       </body>
     </html>
   );

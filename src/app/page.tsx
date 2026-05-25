@@ -1,30 +1,45 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/home/hero";
+
+// Original home sections (restored from git for audit)
+import { Hero as OriginalHero } from "@/components/home/hero";
 import { HeroStats } from "@/components/home/hero-stats";
 import { DisclaimerBanner } from "@/components/home/disclaimer-banner";
 import { Features } from "@/components/home/features";
-import { MevLive } from "@/components/home/mev-live";
 import { Process } from "@/components/home/process";
-import { Industries } from "@/components/home/industries";
-import { Roadmap } from "@/components/home/roadmap";
+
+// Marketing-v2 sections (dark editorial brand)
+import { Hero as CipherCover } from "@/components/marketing/hero";
+import { MegaHeadline } from "@/components/marketing/mega-headline";
+import { Spec } from "@/components/marketing/spec";
+import { CaseGrid } from "@/components/marketing/case-grid";
+import { Roadmap } from "@/components/marketing/roadmap";
+import { Capabilities } from "@/components/marketing/capabilities";
+import { References } from "@/components/marketing/references";
 
 export const metadata: Metadata = {
-  title: "Aura FHE | The Encrypted Compute Layer for Solana",
+  title: "Aura FHE — The Encrypted Compute Layer for Solana",
   description:
-    "Aura FHE brings sub-microsecond, bootstrap-free encryption to Solana. End MEV leakage and unlock institutional capital with the LUT-FHE privacy layer.",
+    "Aura runs Solana programs on data while it stays sealed. Privacy as a mathematical guarantee, not a policy.",
 };
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* ---- ORIGINAL HOME SECTIONS ---- */}
+      <OriginalHero />
       <HeroStats />
       <DisclaimerBanner />
       <Features />
-      <MevLive />
       <Process />
-      <Industries />
+
+      {/* ---- MARKETING-V2 SECTIONS ---- */}
+      <CipherCover />
+      <MegaHeadline />
+      <Spec />
+      <CaseGrid />
       <Roadmap />
+      <Capabilities />
+      <References />
     </>
   );
 }

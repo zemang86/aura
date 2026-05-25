@@ -36,54 +36,54 @@ export default async function BlogPage() {
   const blogSchema = buildBlogSchema(articles);
 
   return (
-    <main className="flex-1 px-6 py-24 sm:py-32">
+    <div className="page-shell">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
       />
-      <div className="mx-auto max-w-5xl">
-        <header className="mb-16 text-center space-y-4">
-          <p className="text-pre-heading-16 text-accent-1">/blog</p>
-          <h1 className="text-h2 text-dark-text">Engineering notes</h1>
-          <p className="text-p16 text-muted-text max-w-2xl mx-auto">
+
+      <section className="page-hero">
+        <div className="page-hero-inner">
+          <div className="page-hero-meta">/blog · Engineering notes</div>
+          <h1>
+            Notes from the <em>encrypted</em> stack.
+          </h1>
+          <p className="page-hero-deck">
             Deep dives on fully homomorphic encryption, private DeFi, and the
             engineering behind Aura.
           </p>
-        </header>
+        </div>
+      </section>
 
-        <ul className="grid gap-10 md:grid-cols-2">
-          {articles.map((article) => (
-            <li key={article.slug}>
-              <Link
-                href={`/blog/${article.slug}`}
-                className="group block space-y-4"
-              >
-                {article.image && (
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[var(--color-elevated)] ring-1 ring-[var(--color-border-token)]">
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                )}
-                <div className="space-y-2">
-                  <p className="text-p14 text-muted-text">
+      <section className="m-section">
+        <div className="m-section-inner">
+          <ul className="blog-list">
+            {articles.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/blog/${article.slug}`} className="blog-card">
+                  {article.image && (
+                    <div className="img-wrap">
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                  )}
+                  <span className="meta">
                     {article.date
                       ? dateFormatter.format(new Date(article.date))
                       : ""}
-                  </p>
-                  <h2 className="text-h3-24 text-dark-text group-hover:text-accent-1 transition-colors">
-                    {article.title}
-                  </h2>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </main>
+                  </span>
+                  <h2>{article.title}</h2>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </div>
   );
 }

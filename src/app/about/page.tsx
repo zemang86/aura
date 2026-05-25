@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HeroBanner } from "@/components/hero-banner";
-import { LightButton } from "@/components/light-button";
 import { SubmitAppForm } from "@/components/submit-app-form";
-import { AnimatedNumber } from "@/components/animated-number";
 
 export const metadata: Metadata = {
   title: "About Aura FHE | Built by Mochi Labs",
@@ -11,51 +8,43 @@ export const metadata: Metadata = {
     "Aura FHE is the encrypted compute layer for the Solana Virtual Machine, built by Mochi Labs on more than a decade of cryptographic research to end the Glass House era of on-chain transparency.",
 };
 
-const HERO_STATS = [
-  {
-    value: 12,
-    suffix: "+",
-    label: "Years of cryptographic research",
-  },
-  {
-    value: 20,
-    suffix: "+",
-    label: "Dedicated engineering experts",
-  },
-  {
-    value: 9,
-    label: "Patents protect the protocol",
-  },
+const HERO_KPIS = [
+  { value: "12+", label: "Years of cryptographic research" },
+  { value: "20+", label: "Dedicated engineering experts" },
+  { value: "9", label: "Patents protect the protocol" },
+  { value: "1", label: "Singapore HQ, globally distributed" },
 ];
 
 const PRINCIPLES = [
   {
-    title: "Math, not policy",
+    title: "Math, not policy.",
     body: "Privacy comes from cryptographic proofs, not access controls or institutional promises.",
   },
   {
-    title: "Privacy by default",
+    title: "Privacy by default.",
     body: "Confidentiality is the baseline state of every computation, not an opt-in feature.",
   },
   {
-    title: "Verifiable by design",
+    title: "Verifiable by design.",
     body: "Every encrypted operation produces a proof of correctness verifiable on-chain.",
   },
   {
-    title: "Solana-native speed",
+    title: "Solana-native speed.",
     body: "FHE that runs at the 400ms block target, not at the minute.",
   },
 ];
 
 const NEXT_STEPS = [
   {
-    title: "Technology",
+    meta: "Technology",
+    title: "How LUT-FHE works.",
     body: "Discover how LUT-FHE delivers encrypted computation at Solana speed.",
     href: "/technology",
   },
   {
-    title: "Ecosystem",
-    body: "See the applications already shipping on the encrypted compute layer.",
+    meta: "Ecosystem",
+    title: "Applications shipping today.",
+    body: "See what is already running on the encrypted compute layer.",
     href: "/ecosystem",
   },
 ];
@@ -98,13 +87,13 @@ const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
     ),
   },
   {
-    label: "Blog",
-    href: "/blog",
+    label: "GitHub",
+    href: "https://github.com/aurafhe",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5">
         <path
           fill="currentColor"
-          d="M4 4h16v2H4V4zm0 5h16v2H4V9zm0 5h10v2H4v-2zm0 5h16v2H4v-2z"
+          d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.55v-2.16c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.15v3.18c0 .31.21.67.8.55A11.52 11.52 0 0 0 23.5 12.03C23.5 5.66 18.35.5 12 .5Z"
         />
       </svg>
     ),
@@ -113,191 +102,187 @@ const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
 
 export default function AboutPage() {
   return (
-    <>
-      <HeroBanner
-        title="Who we are and what we're building"
-        description="Built by Mochi Labs and a decade of cryptographic research. Singapore-headquartered, globally distributed, deeply technical."
-      />
-
-      <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-y-8 px-5 md:px-9 md:grid-cols-3">
-          {HERO_STATS.map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-center gap-2 text-center"
-            >
-              <span className="font-display text-[40px] font-semibold leading-none tracking-tight text-dark-text md:text-[48px]">
-                <AnimatedNumber value={s.value} suffix={s.suffix} />
-              </span>
-              <span className="text-p14 max-w-[260px] text-muted-text">
-                {s.label}
-              </span>
-            </div>
-          ))}
+    <div className="page-shell">
+      <section className="page-hero">
+        <div className="page-hero-inner">
+          <div className="page-hero-meta">About · Mochi Labs</div>
+          <h1>
+            Who we are and what <em>we&rsquo;re building.</em>
+          </h1>
+          <p className="page-hero-deck">
+            Built by Mochi Labs on more than a decade of cryptographic
+            research. Singapore-headquartered, globally distributed, deeply
+            technical.
+          </p>
         </div>
       </section>
 
-      <section className="w-full bg-white py-[48px] md:py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">
-            The Glass House Era is Over
-          </p>
-          <div className="flex max-w-[1128px] flex-col gap-6 text-p16 text-dark/80">
-            <p>
+      <div className="kpi-row">
+        {HERO_KPIS.map((k) => (
+          <div key={k.label} className="kpi">
+            <div className="kpi-num">{k.value}</div>
+            <div className="kpi-label">{k.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>
+              The <em>Glass House</em> era is over.
+            </h2>
+            <div className="right">
               Aura FHE is the culmination of more than a decade of intensive
-              cryptographic research. We recognized early that the public
-              nature of blockchain ledgers would eventually become the ultimate
-              bottleneck for global financial adoption. Our mission is to
-              permanently end the Glass House era by providing the definitive
-              encryption layer for the world&rsquo;s compute.
-            </p>
+              cryptographic research. The public nature of blockchain ledgers
+              has become the structural ceiling for global financial adoption.
+              Our mission is to permanently end the Glass House era.
+            </div>
+          </div>
+
+          <div className="m-prose">
             <p>
-              Solana is the world&rsquo;s most performant blockchain, but its
-              inherent transparency acts as a structural ceiling that prevents
-              the next order of magnitude of on-chain capital from entering
-              the market. Aura FHE is the encrypted compute layer built
-              specifically for the Solana Virtual Machine, designed to bridge
-              the gap between high-speed finance and absolute confidentiality.
-              We are delivering a production-ready ecosystem where transactions
-              are private by default and verifiable by design.
+              Solana is the world&rsquo;s most performant blockchain — but its
+              inherent transparency is a structural ceiling that prevents the
+              next order of magnitude of on-chain capital from entering the
+              market. Aura FHE is the encrypted compute layer built specifically
+              for the Solana Virtual Machine, designed to bridge the gap between
+              high-speed finance and absolute confidentiality.
+            </p>
+            <p className="pull">
+              We deliver a production-ready ecosystem where transactions are
+              private by default and verifiable by design.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">Principles</p>
-          <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
-            What we believe
-          </h2>
-          <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>What we believe.</h2>
+            <div className="right">
+              Four commitments that shape every line of the protocol. None of
+              them are negotiable.
+            </div>
+          </div>
+
+          <div className="principle-grid">
             {PRINCIPLES.map((p, i) => (
-              <li
-                key={p.title}
-                className="flex flex-col gap-3 border border-white/10 bg-elevated p-6 md:p-8"
-              >
-                <span className="font-display text-[14px] font-medium tracking-[0.06em] text-accent-1">
+              <div key={p.title} className="principle">
+                <div className="principle-num">
                   {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-h4 text-dark-text">{p.title}</h3>
-                <p className="text-p16 text-muted-text">{p.body}</p>
-              </li>
+                </div>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
-      <section className="w-full bg-white py-[48px] md:py-[80px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">
-            Architects of the Encrypted Future
-          </p>
-          <p className="text-p16 max-w-[1128px] text-dark/80">
-            Aura FHE is developed by Mochi Labs, headquartered in Singapore,
-            featuring a rapidly scaling engineering organization of over twenty
-            dedicated experts. Our foundational cryptographic work and protocol
-            direction have been meticulously carried out by a collective of
-            Expert Geeks: cryptographers, protocol engineers, builders and
-            DeFi natives with 12+ years of research in fully homomorphic
-            encryption who believe that privacy should be as fast as a Solana
-            block.
-          </p>
-          <p className="text-h3-24 max-w-[1128px] text-dark">
-            We are deploying the encrypted compute layer for the next
-            generation of global finance.
-          </p>
-        </div>
-      </section>
-
-      <section className="w-full bg-dark py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-5 md:px-9">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-pre-heading-16 text-accent-1">Community</p>
-            <h2 className="text-h2 max-w-[700px] text-center text-dark-text">
-              Join the AURA Community
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>
+              Architects of the <em>encrypted</em> future.
             </h2>
+            <div className="right">
+              A collective of cryptographers, protocol engineers, builders and
+              DeFi natives. 12+ years of research in fully homomorphic
+              encryption.
+            </div>
           </div>
 
-          <ul className="flex flex-wrap items-center justify-center gap-4">
-            {SOCIALS.map((s) => {
-              const external = !s.href.startsWith("/");
-              const Anchor = external ? "a" : Link;
-              const anchorProps = external
-                ? {
-                    href: s.href,
-                    target: "_blank",
-                    rel: "noreferrer noopener",
-                  }
-                : { href: s.href };
-              return (
-                <li key={s.label}>
-                  <Anchor
-                    {...(anchorProps as { href: string })}
-                    aria-label={s.label}
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-border-token text-dark-text transition-colors hover:bg-elevated"
-                  >
-                    {s.icon}
-                  </Anchor>
-                </li>
-              );
-            })}
-          </ul>
-
-          <LightButton href="/contact" variant="secondary">
-            Contact us
-          </LightButton>
+          <div className="m-prose">
+            <p>
+              Aura FHE is developed by Mochi Labs, headquartered in Singapore,
+              featuring a rapidly scaling engineering organization of over
+              twenty dedicated experts. Our foundational cryptographic work and
+              protocol direction are carried out by Expert Geeks who believe
+              that privacy should be as fast as a Solana block.
+            </p>
+            <p className="pull">
+              We are deploying the encrypted compute layer for the next
+              generation of global finance.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="w-full bg-white py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-pre-heading-16 text-accent-1">
-              Building on Aura?
-            </p>
-            <h2 className="text-h2 max-w-[700px] text-center text-dark">
-              Submit your app
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>Join the community.</h2>
+            <div className="right">
+              The fastest path in is Discord. For long-form, follow us on X. For
+              partnerships and press, mail{" "}
+              <a className="m-link-inline" href="mailto:hello@afhe.io">
+                hello@afhe.io
+              </a>
+              .
+            </div>
+          </div>
+
+          <div className="soc-row">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={s.label}
+                className="soc-ring"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>
+              Submit your <em>app.</em>
             </h2>
-            <p className="text-p16 max-w-[626px] text-center text-dark/70">
-              Tell us what you&rsquo;re building. We&rsquo;ll get back to you
-              with integration support, technical resources, and ecosystem
+            <div className="right">
+              Tell us what you&rsquo;re building. We&rsquo;ll get back with
+              integration support, technical resources, and ecosystem
               opportunities.
-            </p>
+            </div>
           </div>
 
-          <div className="w-full max-w-[900px] overflow-hidden rounded-3xl border border-dark/10 bg-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.08)]">
+          <div style={{ maxWidth: 880 }}>
             <SubmitAppForm />
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-white pb-[56px] md:pb-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">Keep exploring</p>
-          <h2 className="text-h2 max-w-[700px] text-left text-dark">
-            Where to next
-          </h2>
-          <ul className="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>Where to next.</h2>
+            <div className="right">
+              Two paths in: the math, or the apps. Both lead to the same place.
+            </div>
+          </div>
+
+          <div className="next-row">
             {NEXT_STEPS.map((n) => (
-              <li key={n.href}>
-                <Link
-                  href={n.href}
-                  className="group flex h-full flex-col gap-4 rounded-3xl border border-dark/10 bg-white p-10 transition-all hover:-translate-y-1 hover:border-dark/20 hover:shadow-[0_16px_36px_-8px_rgba(0,0,0,0.10)]"
-                >
-                  <h3 className="text-h3-36 text-dark transition-colors group-hover:text-accent-1">
-                    {n.title}
-                  </h3>
-                  <p className="text-p16 text-dark/70">{n.body}</p>
-                  <span className="text-pre-heading-16 text-accent-1">
-                    Read more →
-                  </span>
-                </Link>
-              </li>
+              <Link key={n.href} href={n.href}>
+                <span className="meta">{n.meta}</span>
+                <h3>{n.title}</h3>
+                <p>{n.body}</p>
+                <span className="arr-row">
+                  Read more <span>→</span>
+                </span>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

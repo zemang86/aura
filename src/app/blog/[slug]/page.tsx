@@ -74,7 +74,7 @@ export default async function ArticlePage({
   ]);
 
   return (
-    <main className="flex-1 px-6 py-24 sm:py-32">
+    <div className="page-shell">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -83,41 +83,37 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <div className="mx-auto max-w-3xl">
-        <Link
-          href="/blog"
-          className="text-p14 text-muted-text hover:text-accent-1 transition-colors"
-        >
-          ← Back to blog
-        </Link>
 
-        <header className="mt-8 mb-12 space-y-6">
-          <p className="text-p14 text-muted-text">
-            {article.date
-              ? dateFormatter.format(new Date(article.date))
-              : ""}
-          </p>
-          <h1 className="text-h2 text-dark-text text-left">{article.title}</h1>
-        </header>
+      <section className="m-section">
+        <div className="article-shell">
+          <Link href="/blog" className="back-link">
+            ← Back to blog
+          </Link>
 
-        {article.image && (
-          <div className="relative aspect-[16/10] mb-12 overflow-hidden rounded-2xl bg-[var(--color-elevated)] ring-1 ring-[var(--color-border-token)]">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              sizes="(min-width: 768px) 768px, 100vw"
-              priority
-              className="object-cover"
-            />
+          <div className="article-meta">
+            {article.date ? dateFormatter.format(new Date(article.date)) : ""}
           </div>
-        )}
+          <h1>{article.title}</h1>
 
-        <article
-          className="prose-article"
-          dangerouslySetInnerHTML={{ __html: article.html }}
-        />
-      </div>
-    </main>
+          {article.image && (
+            <div className="article-img">
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                sizes="(min-width: 768px) 720px, 100vw"
+                priority
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          )}
+
+          <article
+            className="prose-article"
+            dangerouslySetInnerHTML={{ __html: article.html }}
+          />
+        </div>
+      </section>
+    </div>
   );
 }

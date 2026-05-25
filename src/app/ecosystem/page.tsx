@@ -1,9 +1,4 @@
 import type { Metadata } from "next";
-import { HeroBanner } from "@/components/hero-banner";
-import { TextBlock } from "@/components/text-block";
-import { DarkButton } from "@/components/dark-button";
-import { LightButton } from "@/components/light-button";
-import { AnimatedNumber } from "@/components/animated-number";
 import { faqSchema } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
@@ -12,46 +7,11 @@ export const metadata: Metadata = {
     "Explore the applications powered by Aura FHE. From AuraPoly's sealed-bid prediction markets to confidential AI inference and private real-world assets.",
 };
 
-type Status = "Live today" | "Immediately buildable" | "In development";
-
-type Surface = "light" | "dark";
-
-type Metric = { label: string; value: string };
-
-type HeroStat = { value: string; label: string };
-
-type Section = {
-  number: string;
-  status: Status;
-  surface: Surface;
-  title: string;
-  body: string;
-  hero?: HeroStat;
-  metrics?: Metric[];
-  cta?: { label: string; href: string };
-  cardClass: string;
-};
-
-const HERO_STATS = [
-  {
-    value: 100,
-    prefix: "$",
-    suffix: "T+",
-    label: "Institutional capital blocked from DeFi",
-  },
-  {
-    value: 65,
-    suffix: "M+",
-    label: "Solana daily transactions exposed",
-  },
-  {
-    value: 4,
-    label: "Application categories unlocked",
-  },
-  {
-    value: 3,
-    label: "SDK primitives to integrate",
-  },
+const HERO_KPIS = [
+  { value: "$100T+", label: "Institutional capital blocked from DeFi" },
+  { value: "65M+", label: "Solana daily txns exposed" },
+  { value: "4", label: "Application categories unlocked" },
+  { value: "3", label: "SDK primitives to integrate" },
 ];
 
 const USE_CASES = [
@@ -73,329 +33,252 @@ const USE_CASES = [
   "Sealed prediction markets",
 ];
 
-const FAQS = faqSchema.mainEntity.map((q) => ({
-  question: q.name,
-  answer: q.acceptedAnswer.text,
-}));
+type Status = "live" | "buildable" | "dev";
 
-/*
- * Status badge styles by (status weight × surface polarity).
- */
-const BADGE_STYLES: Record<Status, Record<Surface, string>> = {
-  "Live today": {
-    light:
-      "border-dark/15 bg-gradient-to-b from-dark/[0.10] to-dark/[0.04] text-dark shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7)]",
-    dark: "border-white/25 bg-gradient-to-b from-white/[0.16] to-white/[0.06] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]",
-  },
-  "Immediately buildable": {
-    light:
-      "border-dark/10 bg-gradient-to-b from-dark/[0.06] to-dark/[0.02] text-dark/85 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6)]",
-    dark: "border-white/15 bg-gradient-to-b from-white/[0.10] to-white/[0.04] text-white/85 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]",
-  },
-  "In development": {
-    light:
-      "border-dark/[0.06] bg-gradient-to-b from-dark/[0.03] to-dark/[0.01] text-dark/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)]",
-    dark: "border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] text-white/65 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
-  },
+const STATUS_LABEL: Record<Status, string> = {
+  live: "Live today",
+  buildable: "Immediately buildable",
+  dev: "In development",
+};
+
+const STATUS_CLASS: Record<Status, string> = {
+  live: "status-chip live",
+  buildable: "status-chip coral",
+  dev: "status-chip",
+};
+
+type Section = {
+  number: string;
+  status: Status;
+  title: string;
+  body: string;
+  hero?: { value: string; label: string };
+  metrics?: Array<{ label: string; value: string }>;
+  cta?: { label: string; href: string };
 };
 
 const SECTIONS: Section[] = [
   {
     number: "01",
-    status: "Live today",
-    surface: "light",
-    title: "Sealed-Bid Prediction Markets",
-    body: "AuraPoly serves as our flagship production application and is officially live, clearing real flow on the Aura encrypted compute layer. It operates as a sealed-bid prediction market where a half-million dollar fill stays completely invisible until the moment it settles on-chain. By utilizing FHE, we ensure zero information leakage between participants, solving the structural problem of large fills moving the price before execution.",
+    status: "live",
+    title: "Sealed-bid prediction markets.",
+    body: "AuraPoly is our flagship production application — live and clearing real flow on the Aura encrypted compute layer. It runs as a sealed-bid market where a half-million-dollar fill stays completely invisible until the moment it settles on-chain. FHE delivers zero information leakage between participants, solving the structural problem of large fills moving the price before execution.",
     metrics: [
       { label: "TVL", value: "—" },
       { label: "Markets", value: "—" },
       { label: "Resolved volume", value: "—" },
     ],
     cta: { label: "Launch AuraPoly", href: "https://aurapoly.com/" },
-    cardClass:
-      "bg-gradient-to-b from-[#FAFAFC] to-[#EDEEF1] border-white/80 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),0_8px_24px_-8px_rgba(0,0,0,0.06)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9),0_16px_36px_-8px_rgba(0,0,0,0.10)]",
   },
   {
     number: "02",
-    status: "Immediately buildable",
-    surface: "light",
-    title: "Confidential AI Inference",
-    body: "The Aura coprocessor also supports FHE-based Artificial Intelligence inference. This allows sophisticated models to run on encrypted prompts without ever decrypting the input, returning secure outputs that only the specific user can read. This technology enables high-stakes, privacy-critical workloads such as medical diagnostic AI on patient records, legal AI on privileged documents, and financial advisory tools on private portfolio positions.",
-    hero: {
-      value: "50 tps",
-      label: "encrypted LLM inference on consumer hardware",
-    },
-    cardClass:
-      "bg-gradient-to-b from-[#D6DAE0] to-[#BFC4CC] border-white/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.75),0_12px_32px_-8px_rgba(0,0,0,0.14)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.75),0_20px_44px_-8px_rgba(0,0,0,0.18)]",
+    status: "buildable",
+    title: "Confidential AI inference.",
+    body: "The Aura coprocessor supports FHE-based inference. Models run on encrypted prompts without decrypting the input and return outputs only the specific user can read. This enables medical diagnostic AI on patient records, legal AI on privileged documents, and financial advisory tools on private portfolios.",
+    hero: { value: "50 tps", label: "Encrypted LLM on consumer hardware" },
   },
   {
     number: "03",
-    status: "In development",
-    surface: "dark",
-    title: "Institutional Real-World Assets and DeFi",
-    body: "Tokenized real-world assets represent a multi-trillion-dollar market that cannot operate on transparent rails due to commercially sensitive counterparty positions and settlement amounts. Aura FHE provides the critical encryption layer that makes regulated RWA tokenization viable on Solana's public infrastructure. Additionally, our primitives enable encrypted order books for decentralized exchanges and dark pools, allowing wholesale institutional capital to execute large trades without leaking their positions to MEV bots watching the mempool.",
-    hero: {
-      value: "$100T+",
-      label: "institutional capital unlocked",
-    },
-    cardClass:
-      "bg-gradient-to-b from-[#3A3D44] to-[#26282E] border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.10),0_16px_36px_-8px_rgba(0,0,0,0.25)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.10),0_24px_48px_-8px_rgba(0,0,0,0.32)]",
+    status: "dev",
+    title: "Institutional real-world assets.",
+    body: "Tokenized RWAs represent a multi-trillion-dollar market that cannot operate on transparent rails — counterparty positions and settlement amounts are commercially sensitive. Aura provides the encryption layer that makes regulated RWA tokenization viable on Solana. Our primitives also enable encrypted order books for DEXs and dark pools, letting wholesale capital execute without leaking positions to MEV bots watching the mempool.",
+    hero: { value: "$100T+", label: "Institutional capital unlocked" },
   },
   {
     number: "04",
-    status: "Live today",
-    surface: "dark",
-    title: "Three Lines to Total Privacy",
-    body: "AURA SDK v5 is live in production, empowering developers to build the next generation of on-chain finance with privacy by default. Our SDK exposes three highly optimized core primitives: encrypt, compute, and decrypt. With this straightforward interface, a Solana developer can take any existing transparent program, modify just three lines of code, and ship a fully confidential version in under an hour. This seamless integration instantly unlocks a library of higher-level constructs for real-world applications, including encrypted swaps, sealed-bid auctions, and confidential balances.",
-    hero: {
-      value: "< 1 hr",
-      label: "to ship a confidential Solana app",
-    },
+    status: "live",
+    title: "Three lines to total privacy.",
+    body: "AURA SDK v5 is live in production. Three highly optimized primitives — encrypt, compute, decrypt — let a Solana developer take any transparent program, modify three lines of code, and ship a confidential version in under an hour. The interface instantly unlocks higher-level constructs: encrypted swaps, sealed-bid auctions, confidential balances.",
+    hero: { value: "< 1 hr", label: "To ship a confidential Solana app" },
     cta: {
       label: "Browse the SDK",
       href: "https://github.com/aurafhe/shield-sdk/tree/shield_sdk",
     },
-    cardClass:
-      "bg-gradient-to-b from-[#15171B] to-[#0B0B0D] border-white/8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_44px_-8px_rgba(0,0,0,0.35)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_28px_56px_-8px_rgba(0,0,0,0.45)]",
   },
 ];
 
+const FAQS = faqSchema.mainEntity.map((q) => ({
+  question: q.name,
+  answer: q.acceptedAnswer.text,
+}));
+
 export default function EcosystemPage() {
   return (
-    <>
-      <HeroBanner
-        title="Building the Encrypted Economy"
-        description="Live applications, institutional partnerships, and developer primitives shipping the encrypted economy on Solana today."
-      />
+    <div className="page-shell">
+      <section className="page-hero">
+        <div className="page-hero-inner">
+          <div className="page-hero-meta">Ecosystem · Live on Solana</div>
+          <h1>
+            Building the <em>encrypted</em> economy.
+          </h1>
+          <p className="page-hero-deck">
+            Live applications, institutional partnerships, and developer
+            primitives — shipping the encrypted economy on Solana today.
+          </p>
+        </div>
+      </section>
 
-      <section className="w-full border-t border-b border-white/10 bg-dark py-10">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-5 md:px-9">
-          <div className="grid grid-cols-2 gap-y-8 md:grid-cols-4">
-            {HERO_STATS.map((s) => (
-              <div
-                key={s.label}
-                className="flex flex-col items-center gap-2 text-center"
-              >
-                <span className="font-display text-[40px] font-semibold leading-none tracking-tight text-dark-text md:text-[48px]">
-                  <AnimatedNumber
-                    value={s.value}
-                    prefix={s.prefix}
-                    suffix={s.suffix}
-                  />
-                </span>
-                <span className="text-p14 max-w-[220px] text-muted-text">
-                  {s.label}
-                </span>
+      <div className="kpi-row">
+        {HERO_KPIS.map((k) => (
+          <div key={k.label} className="kpi">
+            <div className="kpi-num">{k.value}</div>
+            <div className="kpi-label">{k.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>What you can build.</h2>
+            <div className="right">
+              Aura FHE primitives unlock entire categories of applications that
+              were fundamentally impossible on transparent rails. Here&rsquo;s
+              the landscape that becomes possible when computation is truly
+              private.
+            </div>
+          </div>
+
+          <div className="tag-grid">
+            {USE_CASES.map((label) => (
+              <div key={label} className="tag">
+                {label}
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="flex items-center justify-center gap-3 border-t border-white/5 pt-6">
-            <span className="text-pre-heading-16 text-muted-text">
-              Built for
-            </span>
-            <span className="font-display text-[20px] font-semibold tracking-tight text-dark-text">
-              Solana
-            </span>
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>
+              Four <em>shipping</em> applications.
+            </h2>
+            <div className="right">
+              Everything in our ecosystem is either live today, in active
+              development with institutional partners, or immediately buildable
+              using the current SDK.
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gap: 24 }}>
+            {SECTIONS.map((s) => (
+              <article key={s.number} className="feature-card">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <span className="status-chip">{s.number}</span>
+                  <span className={STATUS_CLASS[s.status]}>
+                    <span className="dot" />
+                    {STATUS_LABEL[s.status]}
+                  </span>
+                </div>
+                <h3>{s.title}</h3>
+                <p className="lede">{s.body}</p>
+
+                {s.hero && (
+                  <div className="hero-stat">
+                    <span className="v">{s.hero.value}</span>
+                    <span className="l">{s.hero.label}</span>
+                  </div>
+                )}
+
+                {s.metrics && (
+                  <div className="metrics">
+                    {s.metrics.map((m) => (
+                      <div key={m.label}>
+                        <span className="l">{m.label}</span>
+                        <span className="v">{m.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {s.cta && (
+                  <div>
+                    <a
+                      className="m-btn-outline"
+                      href={s.cta.href}
+                      target={s.cta.href.startsWith("/") ? undefined : "_blank"}
+                      rel={
+                        s.cta.href.startsWith("/")
+                          ? undefined
+                          : "noreferrer noopener"
+                      }
+                    >
+                      {s.cta.label} <span className="arr">→</span>
+                    </a>
+                  </div>
+                )}
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <TextBlock>
-        The Aura FHE architecture only matters if developers can build
-        paradigm-shifting applications with it. Our protocol unlocks entirely
-        new categories of decentralized applications that were fundamentally
-        impossible on transparent blockchains. Everything in our ecosystem is
-        either live today, in active development with institutional partners,
-        or immediately buildable using our current software development kit.
-      </TextBlock>
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>Common questions.</h2>
+            <div className="right">
+              If you&rsquo;re evaluating Aura for an integration and have
+              something specific that isn&rsquo;t covered here, mail{" "}
+              <a className="m-link-inline" href="mailto:hello@afhe.io">
+                hello@afhe.io
+              </a>
+              .
+            </div>
+          </div>
 
-      <section className="w-full bg-dark py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">The landscape</p>
-          <h2 className="text-h2 max-w-[700px] text-left text-dark-text">
-            What you can build
-          </h2>
-          <p className="text-p16 max-w-[1128px] text-muted-text">
-            Aura FHE primitives unlock entire categories of applications that
-            were fundamentally impossible on transparent rails. Here&rsquo;s
-            the landscape that becomes possible when computation is truly
-            private.
-          </p>
-          <ul className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {USE_CASES.map((label) => (
-              <li
-                key={label}
-                className="flex items-center gap-3 border border-white/10 bg-elevated px-5 py-4 transition-colors hover:border-accent-1/40 hover:bg-elevated/80"
-              >
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-1" />
-                <span className="text-p14 text-dark-text">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="w-full bg-white pb-[56px] pt-[40px] md:pb-[100px] md:pt-[60px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-5 md:px-9">
-          {SECTIONS.map((s) => {
-            const isDark = s.surface === "dark";
-            return (
-              <article
-                key={s.number}
-                className={`rounded-3xl border p-10 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 md:p-14 ${s.cardClass}`}
-              >
-                <div className="flex flex-col items-start gap-6">
-                  <div
-                    className={`inline-flex items-center rounded-full border px-4 py-1.5 backdrop-blur-md ${BADGE_STYLES[s.status][s.surface]}`}
-                  >
-                    <span className="text-pre-heading-16">
-                      {s.number} · {s.status}
-                    </span>
-                  </div>
-                  <h3
-                    className={`text-h3-36 max-w-[1128px] ${
-                      isDark ? "text-dark-text" : "text-dark"
-                    }`}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className={`text-p16 max-w-[1128px] ${
-                      isDark ? "text-muted-text" : "text-dark/80"
-                    }`}
-                  >
-                    {s.body}
-                  </p>
-
-                  {s.hero && (
-                    <div
-                      className={`flex w-full max-w-[640px] flex-col items-start gap-2 rounded-2xl border p-6 backdrop-blur-sm sm:flex-row sm:items-center sm:gap-5 ${
-                        isDark
-                          ? "border-white/10 bg-white/[0.04]"
-                          : "border-dark/10 bg-white/60"
-                      }`}
-                    >
-                      <span
-                        className={`font-display text-[40px] font-semibold leading-none tracking-tight sm:text-[44px] ${
-                          isDark ? "text-dark-text" : "text-dark"
-                        }`}
-                      >
-                        {s.hero.value}
-                      </span>
-                      <span
-                        className={`text-p14 ${
-                          isDark ? "text-muted-text" : "text-dark/55"
-                        }`}
-                      >
-                        {s.hero.label}
-                      </span>
-                    </div>
-                  )}
-
-                  {s.metrics && (
-                    <ul className="grid w-full max-w-[640px] grid-cols-1 gap-3 sm:grid-cols-3">
-                      {s.metrics.map((m) => (
-                        <li
-                          key={m.label}
-                          className="flex flex-col gap-1 rounded-xl border border-dark/10 bg-white/60 px-4 py-3 backdrop-blur-sm"
-                        >
-                          <span className="text-p14 text-dark/55">
-                            {m.label}
-                          </span>
-                          <span className="font-display text-[24px] font-semibold leading-none text-dark">
-                            {m.value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {s.cta &&
-                    (isDark ? (
-                      <LightButton
-                        href={s.cta.href}
-                        variant="main"
-                        external
-                      >
-                        {s.cta.label}
-                      </LightButton>
-                    ) : (
-                      <DarkButton
-                        href={s.cta.href}
-                        variant="main"
-                        external
-                      >
-                        {s.cta.label}
-                      </DarkButton>
-                    ))}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="w-full bg-white pb-[56px] md:pb-[100px]">
-        <div className="mx-auto flex max-w-[900px] flex-col items-start gap-9 px-5 md:px-9">
-          <p className="text-pre-heading-16 text-accent-1">FAQ</p>
-          <h2 className="text-h2 max-w-[700px] text-left text-dark">
-            Common questions
-          </h2>
-          <div className="w-full border-t border-dark/10">
+          <div className="faq-list">
             {FAQS.map((faq) => (
-              <details
-                key={faq.question}
-                className="group border-b border-dark/10"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
-                  <span className="text-h4 text-dark">{faq.question}</span>
-                  <span className="font-display text-[28px] font-light leading-none text-dark/40 transition-transform duration-200 group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <p className="text-p16 pb-5 pr-12 text-dark/70">
-                  {faq.answer}
-                </p>
+              <details key={faq.question} className="faq-row">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-9 px-5 md:px-9">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-pre-heading-16 text-accent-1">Start shipping</p>
-            <h2 className="text-h2 max-w-[700px] text-center text-dark-text">
-              What will you build?
-            </h2>
-            <p className="text-p16 max-w-[626px] text-center text-muted-text">
-              Three primitives. Three lines of code. Ship a fully confidential
-              Solana app this week.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <LightButton
+      <section className="cta-block">
+        <div className="cta-block-inner">
+          <h2>
+            What will you <em>build?</em>
+          </h2>
+          <p>
+            Three primitives. Three lines of code. Ship a fully confidential
+            Solana app this week.
+          </p>
+          <div className="row">
+            <a
+              className="m-btn-primary"
               href="https://docs.afhe.io"
-              variant="main"
-              external
+              target="_blank"
+              rel="noreferrer noopener"
             >
-              Read the docs
-            </LightButton>
-            <LightButton
+              Read the docs <span className="arr">→</span>
+            </a>
+            <a
+              className="m-btn-outline"
               href="https://discord.gg/afhe"
-              variant="secondary"
-              external
+              target="_blank"
+              rel="noreferrer noopener"
             >
-              Join Discord
-            </LightButton>
-            <LightButton href="/about" variant="secondary">
-              Submit your app
-            </LightButton>
+              Join Discord <span className="arr">→</span>
+            </a>
+            <a className="m-btn-outline" href="/about">
+              Submit your app <span className="arr">→</span>
+            </a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

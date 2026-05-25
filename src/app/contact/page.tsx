@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HeroBanner } from "@/components/hero-banner";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
@@ -62,70 +61,78 @@ const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
 
 export default function ContactPage() {
   return (
-    <>
-      <HeroBanner
-        title="Get in touch"
-        description="Reach out for partnerships, press, or integration questions — or jump into Discord for the fastest response."
-      />
+    <div className="page-shell">
+      <section className="page-hero">
+        <div className="page-hero-inner">
+          <div className="page-hero-meta">Contact · Direct line</div>
+          <h1>
+            Get in <em>touch.</em>
+          </h1>
+          <p className="page-hero-deck">
+            Reach out for partnerships, press, or integration questions. For
+            real-time questions, Discord is the fastest path in.
+          </p>
+        </div>
+      </section>
 
-      <section className="w-full bg-white py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-9 px-5 md:px-9">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-pre-heading-16 text-accent-1">Contact us</p>
-            <h2 className="text-h2 max-w-[700px] text-center text-dark">
-              Send us a message
-            </h2>
-            <p className="text-p16 max-w-[626px] text-center text-dark/70">
-              Tell us how we can help. We typically respond within two
-              business days.
-            </p>
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>Send us a message.</h2>
+            <div className="right">
+              We typically respond within two business days. For urgent
+              partnership conversations, mention &ldquo;urgent&rdquo; in the
+              topic.
+            </div>
           </div>
 
-          <div className="w-full max-w-[900px] overflow-hidden rounded-3xl border border-dark/10 bg-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.08)]">
+          <div style={{ maxWidth: 880 }}>
             <ContactForm />
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-dark py-[56px] md:py-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-11 px-5 md:px-9">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-pre-heading-16 text-accent-1">Community</p>
-            <h2 className="text-h2 max-w-[700px] text-center text-dark-text">
-              Find us in the wild
-            </h2>
-            <p className="text-p16 max-w-[626px] text-center text-muted-text">
+      <section className="m-section">
+        <div className="m-section-inner">
+          <div className="m-section-head">
+            <h2>Find us in the wild.</h2>
+            <div className="right">
               For real-time questions and ecosystem updates, our community
               channels are the fastest path in.
-            </p>
+            </div>
           </div>
 
-          <ul className="flex flex-wrap items-center justify-center gap-4">
+          <div className="soc-row">
             {SOCIALS.map((s) => {
               const external = !s.href.startsWith("/");
-              const Anchor = external ? "a" : Link;
-              const anchorProps = external
-                ? {
-                    href: s.href,
-                    target: "_blank",
-                    rel: "noreferrer noopener",
-                  }
-                : { href: s.href };
-              return (
-                <li key={s.label}>
-                  <Anchor
-                    {...(anchorProps as { href: string })}
+              if (external) {
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     aria-label={s.label}
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-border-token text-dark-text transition-colors hover:bg-elevated"
+                    className="soc-ring"
                   >
                     {s.icon}
-                  </Anchor>
-                </li>
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="soc-ring"
+                >
+                  {s.icon}
+                </Link>
               );
             })}
-          </ul>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -1,29 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
+import { AnimatedNumber } from "@/components/animated-number";
 
-type FeatureCard = {
-  bg?: string;
-  image: string;
-  imageAspect: number;
-  title: string;
-  body: string;
+type Stat = {
+  label: string;
+  value: number;
+  decimals?: number;
+  suffix?: string;
 };
 
-const CARDS: FeatureCard[] = [
-  {
-    bg: "https://framerusercontent.com/images/FBW3KOe0hdGanbYIjPQoCW6Pz8.png",
-    image: "https://framerusercontent.com/images/UQWq3tALDzhY4QFwbeexfUiooI.png",
-    imageAspect: 1.171,
-    title: "Billions lost to MEV on Solana",
-    body: "Every transaction you submit is visible to the entire world. Bots reorder, front-run, and extract value from your trades before they even settle. Your alpha is their profit.",
-  },
-  {
-    image: "https://framerusercontent.com/images/YqAWY7OOpp4wsNSKKSZy4mj6zY.png",
-    imageAspect: 1.794,
-    title: "Your entire history is searchable by anyone",
-    body: "Connect your wallet once and your entire financial life is exposed. Net worth, holdings, every transaction are permanently indexed and findable by everyone.",
-  },
+// Source: sandwiched.me. Update STATS and LAST_UPDATED together.
+const STATS: Stat[] = [
+  { label: "Sandwiches", value: 77522 },
+  { label: "Extracted", value: 10652.874, decimals: 3, suffix: " SOL" },
+  { label: "Swap Volume", value: 5.04, decimals: 2, suffix: "B SOL" },
+  { label: "Cost", value: 234.936, decimals: 3, suffix: " SOL" },
+  { label: "Victims", value: 48882 },
+  { label: "Attackers", value: 207 },
 ];
+
+const LAST_UPDATED = "May 22, 2026";
 
 export function Features() {
   return (
@@ -41,48 +36,64 @@ export function Features() {
           </p>
         </div>
 
+        <div className="flex w-full flex-col items-center gap-9">
+          <div className="flex flex-col items-center gap-4 px-6">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-1 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-1" />
+              </span>
+              <p className="text-pre-heading-16 text-accent-1">
+                Live · Last 30 days
+              </p>
+            </div>
+            <p className="text-p16 max-w-[626px] text-center text-dark/70">
+              Real-time MEV extraction on Solana over the past 30 days. Every
+              number below is happening to a real wallet right now.
+            </p>
+          </div>
+
+          <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {STATS.map((s) => (
+              <li
+                key={s.label}
+                className="flex flex-col gap-4 border border-dark/10 bg-white p-6 md:p-8"
+              >
+                <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-dark/55">
+                  {s.label}
+                </p>
+                <p className="font-display text-[34px] font-semibold leading-none tracking-tight text-dark md:text-[44px]">
+                  <AnimatedNumber
+                    value={s.value}
+                    decimals={s.decimals ?? 0}
+                    suffix={s.suffix}
+                  />
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-p14 text-dark/55">
+            Source:{" "}
+            <a
+              href="https://sandwiched.me/sandwiches"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="underline underline-offset-4 transition-colors hover:text-accent-1"
+            >
+              sandwiched.me ↗
+            </a>
+            {" · Updated "}
+            {LAST_UPDATED}
+          </p>
+        </div>
+
         <Link
           href="/about"
           className="text-body inline-flex h-10 w-60 items-center justify-center rounded-[10px] bg-[rgb(51,51,51)] text-white transition-colors hover:bg-[rgb(51,51,51)]/85"
         >
           Find out more
         </Link>
-
-        <div className="grid w-full grid-cols-1 gap-2.5 md:grid-cols-2">
-          {CARDS.map((card) => (
-            <article
-              key={card.title}
-              className="relative flex flex-col gap-6 overflow-hidden bg-elevated p-6 md:p-9"
-            >
-              {card.bg && (
-                <Image
-                  src={card.bg}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover opacity-60"
-                  unoptimized
-                />
-              )}
-              <div className="relative z-10 flex flex-1 flex-col gap-6">
-                <div className="relative w-full overflow-hidden rounded">
-                  <Image
-                    src={card.image}
-                    alt=""
-                    width={500}
-                    height={Math.round(500 / card.imageAspect)}
-                    className="h-auto w-full"
-                    unoptimized
-                  />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-h3-24 text-dark-text">{card.title}</h3>
-                  <p className="text-p16 text-muted-text">{card.body}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -7,13 +7,6 @@ export const metadata: Metadata = {
     "Explore the applications powered by Aura FHE. From AuraPoly's sealed-bid prediction markets to confidential AI inference and private real-world assets.",
 };
 
-const HERO_KPIS = [
-  { value: "$100T+", label: "Institutional capital blocked from DeFi" },
-  { value: "65M+", label: "Solana daily txns exposed" },
-  { value: "4", label: "Application categories unlocked" },
-  { value: "3", label: "SDK primitives to integrate" },
-];
-
 const USE_CASES = [
   "Encrypted swaps",
   "Sealed-bid auctions",
@@ -33,23 +26,8 @@ const USE_CASES = [
   "Sealed prediction markets",
 ];
 
-type Status = "live" | "buildable" | "dev";
-
-const STATUS_LABEL: Record<Status, string> = {
-  live: "Live today",
-  buildable: "Immediately buildable",
-  dev: "In development",
-};
-
-const STATUS_CLASS: Record<Status, string> = {
-  live: "status-chip live",
-  buildable: "status-chip coral",
-  dev: "status-chip",
-};
-
 type Section = {
   number: string;
-  status: Status;
   title: string;
   body: string;
   hero?: { value: string; label: string };
@@ -60,7 +38,6 @@ type Section = {
 const SECTIONS: Section[] = [
   {
     number: "01",
-    status: "live",
     title: "Sealed-bid prediction markets.",
     body: "AuraPoly is our flagship production application — live and clearing real flow on the Aura encrypted compute layer. It runs as a sealed-bid market where a half-million-dollar fill stays completely invisible until the moment it settles on-chain. FHE delivers zero information leakage between participants, solving the structural problem of large fills moving the price before execution.",
     metrics: [
@@ -72,21 +49,18 @@ const SECTIONS: Section[] = [
   },
   {
     number: "02",
-    status: "buildable",
     title: "Confidential AI inference.",
     body: "The Aura coprocessor supports FHE-based inference. Models run on encrypted prompts without decrypting the input and return outputs only the specific user can read. This enables medical diagnostic AI on patient records, legal AI on privileged documents, and financial advisory tools on private portfolios.",
     hero: { value: "50 tps", label: "Encrypted LLM on consumer hardware" },
   },
   {
     number: "03",
-    status: "dev",
     title: "Institutional real-world assets.",
     body: "Tokenized RWAs represent a multi-trillion-dollar market that cannot operate on transparent rails — counterparty positions and settlement amounts are commercially sensitive. Aura provides the encryption layer that makes regulated RWA tokenization viable on Solana. Our primitives also enable encrypted order books for DEXs and dark pools, letting wholesale capital execute without leaking positions to MEV bots watching the mempool.",
     hero: { value: "$100T+", label: "Institutional capital unlocked" },
   },
   {
     number: "04",
-    status: "live",
     title: "Three lines to total privacy.",
     body: "AURA SDK v5 is live in production. Three highly optimized primitives — encrypt, compute, decrypt — let a Solana developer take any transparent program, modify three lines of code, and ship a confidential version in under an hour. The interface instantly unlocks higher-level constructs: encrypted swaps, sealed-bid auctions, confidential balances.",
     hero: { value: "< 1 hr", label: "To ship a confidential Solana app" },
@@ -117,15 +91,6 @@ export default function EcosystemPage() {
           </p>
         </div>
       </section>
-
-      <div className="kpi-row">
-        {HERO_KPIS.map((k) => (
-          <div key={k.label} className="kpi">
-            <div className="kpi-num">{k.value}</div>
-            <div className="kpi-label">{k.label}</div>
-          </div>
-        ))}
-      </div>
 
       <section className="m-section">
         <div className="m-section-inner">
@@ -165,20 +130,6 @@ export default function EcosystemPage() {
           <div style={{ display: "grid", gap: 24 }}>
             {SECTIONS.map((s) => (
               <article key={s.number} className="feature-card">
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 14,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <span className="status-chip">{s.number}</span>
-                  <span className={STATUS_CLASS[s.status]}>
-                    <span className="dot" />
-                    {STATUS_LABEL[s.status]}
-                  </span>
-                </div>
                 <h3>{s.title}</h3>
                 <p className="lede">{s.body}</p>
 

@@ -915,13 +915,17 @@ body {
 .m-roadmap,
 .caps,
 .refs,
-.page-hero,
 .m-section,
 .cta-block,
 .kpi-row {
   max-width: var(--m-page-max);
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Page hero is full-bleed — only its inner content respects the 1280 max */
+.page-hero {
+  max-width: none;
 }
 
 /* Footer spans full viewport — but its content is wrapped in .foot-inner
@@ -1469,10 +1473,47 @@ body {
   gap: 18px;
   position: relative;
   min-height: 380px;
-  transition: background 0.25s;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+.case::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--coral);
+  transition: width 0.45s ease;
+  z-index: 2;
+}
+.case::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 0;
+  background: var(--coral);
+  transition: height 0.45s ease 0.1s;
+  z-index: 2;
 }
 .case:hover {
   background: var(--ink-2);
+  transform: translateY(-2px);
+}
+.case:hover::before {
+  width: 72px;
+}
+.case:hover::after {
+  height: 72px;
+}
+.case:hover h3 {
+  color: var(--coral);
+}
+.case h3 {
+  transition: color 0.3s ease;
 }
 .case-tags {
   display: flex;
@@ -2115,45 +2156,6 @@ body.marketing-v2 a {
   text-decoration: none;
 }
 
-/* ------------------------------------------------------------------
- * Italic accent disabled — design system <em> words keep their coral
- * color but render in the regular marketing sans, not Fraunces italic.
- * Scoped to the brand-system selectors so generic em inside blog prose
- * is unaffected.
- * ------------------------------------------------------------------ */
-.t-display em,
-.t-h2 em,
-.t-h3 em,
-.t-h4 em,
-.t-foot em,
-.page-hero h1 em,
-.m-section-head h2 em,
-.m-prose em,
-.cta-block h2 em,
-.spec h2 em,
-.mega-display h1 em,
-.cases-head h2 em,
-.caps-head h2 em,
-.refs-head h2 em,
-.ref h3 em,
-.foot-display em,
-.m-404 .num em,
-.cover-tagline em,
-.feature-card h3 em,
-.next-row h3 em {
-  font-family: inherit;
-  font-style: normal;
-  font-weight: inherit;
-  font-variation-settings: normal;
-  letter-spacing: inherit;
-}
-
-/* Pull-quote — drop the Fraunces italic; keep the coral left border. */
-.m-prose .pull {
-  font-family: var(--m-sans);
-  font-style: normal;
-  font-variation-settings: normal;
-}
 
 /* ============================================================
  * Inner-page primitives (Technology / Ecosystem / About / etc.)
@@ -2168,7 +2170,13 @@ body.marketing-v2 a {
   position: relative;
   padding: 120px 32px 80px;
   border-bottom: 1px solid var(--rule);
-  background: var(--ink);
+  background:
+    radial-gradient(
+      ellipse at 75% 95%,
+      rgba(255, 107, 61, 0.22),
+      transparent 70%
+    ),
+    linear-gradient(to bottom, var(--ink-2) 0%, var(--ink) 70%);
 }
 @media (max-width: 760px) {
   .page-hero {
@@ -2595,16 +2603,58 @@ body.marketing-v2 a {
 
 /* Big feature article (ecosystem applications) */
 .feature-card {
+  position: relative;
   border: 1px solid var(--rule);
   padding: 48px;
   background: var(--ink);
   display: flex;
   flex-direction: column;
   gap: 22px;
-  transition: border-color 0.25s;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 0;
+  height: 1px;
+  background: var(--coral);
+  transition: width 0.45s ease;
+}
+.feature-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 1px;
+  height: 0;
+  background: var(--coral);
+  transition: height 0.45s ease 0.1s;
 }
 .feature-card:hover {
-  border-color: var(--rule-2);
+  border-color: rgba(255, 107, 61, 0.35);
+  background: var(--ink-2);
+  transform: translateY(-2px);
+}
+.feature-card:hover::before {
+  width: 96px;
+}
+.feature-card:hover::after {
+  height: 96px;
+}
+.feature-card:hover h3 {
+  color: var(--coral);
+}
+.feature-card h3 {
+  transition: color 0.3s ease;
+}
+.feature-card:hover .m-btn-outline {
+  border-color: var(--coral);
+  color: var(--coral);
 }
 @media (max-width: 760px) {
   .feature-card {
@@ -2867,16 +2917,48 @@ body.marketing-v2 a {
   }
 }
 .next-row > a {
+  position: relative;
   background: var(--ink);
   padding: 48px 36px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-height: 220px;
-  transition: background 0.2s;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+.next-row > a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--coral);
+  transition: width 0.45s ease;
+  z-index: 2;
+}
+.next-row > a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 0;
+  background: var(--coral);
+  transition: height 0.45s ease 0.1s;
+  z-index: 2;
 }
 .next-row > a:hover {
   background: var(--ink-2);
+  transform: translateY(-2px);
+}
+.next-row > a:hover::before {
+  width: 84px;
+}
+.next-row > a:hover::after {
+  height: 84px;
 }
 .next-row .meta {
   font-family: var(--m-mono);
@@ -2934,7 +3016,12 @@ body.marketing-v2 a {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  transition: opacity 0.2s;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s;
+}
+.blog-card:hover {
+  transform: translateY(-3px);
 }
 .blog-card .img-wrap {
   position: relative;
@@ -2942,15 +3029,25 @@ body.marketing-v2 a {
   overflow: hidden;
   border: 1px solid var(--rule);
   background: var(--ink-2);
+  transition: border-color 0.3s ease;
+}
+.blog-card:hover .img-wrap {
+  border-color: rgba(255, 107, 61, 0.35);
 }
 .blog-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  transition: transform 0.5s ease;
 }
 .blog-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.04);
+}
+.blog-card:hover .meta {
+  color: var(--coral);
+}
+.blog-card .meta {
+  transition: color 0.3s ease;
 }
 .blog-card .meta {
   font-family: var(--m-mono);
@@ -3182,4 +3279,46 @@ body.marketing-v2 .prose-article img {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 8px;
+}
+
+/* ------------------------------------------------------------------
+ * Italic accent disabled — design system <em> words keep their coral
+ * color but render in the regular marketing sans, not Fraunces italic.
+ * Must come AFTER every `.x em { font-style: italic; font-family: var(--m-serif) }`
+ * rule in this file so it wins the cascade on equal specificity.
+ * Scoped to brand-system selectors so generic em inside blog prose
+ * (.prose-article em) keeps its italic.
+ * ------------------------------------------------------------------ */
+.t-display em,
+.t-h2 em,
+.t-h3 em,
+.t-h4 em,
+.t-foot em,
+.page-hero h1 em,
+.m-section-head h2 em,
+.m-prose em,
+.cta-block h2 em,
+.spec h2 em,
+.mega-display h1 em,
+.cases-head h2 em,
+.caps-head h2 em,
+.refs-head h2 em,
+.ref h3 em,
+.foot-display em,
+.m-404 .num em,
+.cover-tagline em,
+.feature-card h3 em,
+.next-row h3 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  font-variation-settings: normal;
+  letter-spacing: inherit;
+}
+
+/* Pull-quote — drop the Fraunces italic; keep the coral left border. */
+.m-prose .pull {
+  font-family: var(--m-sans);
+  font-style: normal;
+  font-variation-settings: normal;
 }

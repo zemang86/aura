@@ -1861,7 +1861,12 @@ body {
   padding: 120px 0 60px;
   border-top: 1px solid var(--rule);
   position: relative;
-  background: var(--ink);
+  background: linear-gradient(
+    to bottom,
+    rgb(10, 10, 11) 0%,
+    rgb(10, 10, 11) 25%,
+    rgb(48, 22, 14) 100%
+  );
 }
 .foot-display {
   font-family: var(--m-sans);

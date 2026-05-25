@@ -18,6 +18,15 @@ export function Hero() {
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/30 to-dark/80" />
 
+      {/* Subtle coral wash — bottom-right glow tints the scene warm */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 75% 95%, rgba(255, 107, 61, 0.22), transparent 75%)",
+        }}
+      />
+
       {/* Cipher stream — atmospheric matrix of live encrypted ops behind the title */}
       <div
         aria-hidden="true"

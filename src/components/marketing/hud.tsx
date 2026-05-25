@@ -156,9 +156,13 @@ export function HUD({ variant }: HUDProps = {}) {
         </>
       )}
 
-      {menuOpen && (
-        <div className="hud-menu" onClick={() => setMenuOpen(false)}>
-          <div className="hud-menu-panel" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="hud-menu"
+        data-open={menuOpen}
+        aria-hidden={!menuOpen}
+        onClick={() => setMenuOpen(false)}
+      >
+        <div className="hud-menu-panel" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               aria-label="Close menu"
@@ -240,7 +244,6 @@ export function HUD({ variant }: HUDProps = {}) {
             </div>
           </div>
         </div>
-      )}
     </>
   );
 }

@@ -8,9 +8,7 @@ import { Features } from "@/components/home/features";
 import { Process } from "@/components/home/process";
 
 // Marketing-v2 sections (dark editorial brand)
-import { Spec } from "@/components/marketing/spec";
 import { CaseGrid } from "@/components/marketing/case-grid";
-import { Capabilities } from "@/components/marketing/capabilities";
 
 export const metadata: Metadata = {
   title: "Aura FHE — The Encrypted Compute Layer for Solana",
@@ -25,13 +23,11 @@ export default function HomePage() {
       <OriginalHero />
       <HeroStats />
       <DisclaimerBanner />
-      <Spec />
       <Features />
       <Process />
 
       {/* ---- MARKETING-V2 SECTIONS ---- */}
       <CaseGrid />
-      <Capabilities />
     </>
   );
 }

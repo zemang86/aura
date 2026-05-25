@@ -56,7 +56,7 @@ export function Hero() {
             default. Verifiable by design.
           </p>
         </div>
-        <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
+        <div className="hero-cta-row flex w-full flex-row items-stretch justify-center gap-2 sm:w-auto sm:flex-wrap sm:items-center sm:gap-4">
           <a
             className="m-btn-primary"
             href="https://docs.afhe.io"
@@ -66,12 +66,7 @@ export function Hero() {
             Read the docs <span className="arr">→</span>
           </a>
           <a
-            className="m-btn-outline"
-            style={{
-              padding: "18px 28px",
-              fontSize: 13,
-              letterSpacing: "0.16em",
-            }}
+            className="m-btn-outline hero-btn-lg"
             href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"
             target="_blank"
             rel="noreferrer noopener"

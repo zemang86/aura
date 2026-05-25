@@ -159,8 +159,26 @@ export function HUD({ variant }: HUDProps = {}) {
       {menuOpen && (
         <div className="hud-menu" onClick={() => setMenuOpen(false)}>
           <div className="hud-menu-panel" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+              className="hud-menu-close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
             <div className="hud-menu-meta">Navigate</div>
             <ul className="hud-menu-list">
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="hud-menu-link"
+                >
+                  Home
+                  <span className="arr">→</span>
+                </Link>
+              </li>
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link

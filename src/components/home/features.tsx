@@ -60,16 +60,16 @@ export function Features() {
             </p>
           </div>
 
-          <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid w-full grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {STATS.map((s) => (
               <li
                 key={s.label}
-                className="flex flex-col gap-4 border border-dark/10 bg-white p-6 md:p-8"
+                className="flex flex-col gap-2 border border-dark/10 bg-white p-4 sm:gap-4 sm:p-6 md:p-8"
               >
-                <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-dark/55">
+                <p className="text-[10px] font-medium uppercase tracking-[0.08em] text-dark/55 sm:text-[12px]">
                   {s.label}
                 </p>
-                <p className="font-display text-[34px] font-semibold leading-none tracking-tight text-dark md:text-[44px]">
+                <p className="font-display text-[22px] font-semibold leading-none tracking-tight text-dark sm:text-[34px] md:text-[44px]">
                   <AnimatedNumber
                     value={s.value}
                     decimals={s.decimals ?? 0}

@@ -92,12 +92,12 @@ export function Process() {
 
         <div
           ref={scrollRef}
-          className="flex w-full snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:snap-none md:pb-0"
+          className="-mx-5 flex w-screen snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:w-full md:grid-cols-5 md:gap-5 md:overflow-visible md:px-0 md:snap-none md:pb-0"
         >
           {COMPONENTS.map((c) => (
             <article
               key={c.title}
-              className="flex min-w-[85%] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-6 sm:min-w-[60%] md:min-w-0 md:shrink md:snap-align-none md:p-7"
+              className="flex w-[calc(100vw-40px)] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-5 sm:w-[calc(60vw-40px)] md:w-auto md:shrink md:snap-align-none md:p-7"
             >
               <h3 className="text-h3-24 text-dark-text">{c.title}</h3>
               <p className="text-p16 text-muted-text">{c.body}</p>
@@ -111,7 +111,7 @@ export function Process() {
             onClick={prev}
             aria-label="Previous component"
             disabled={active === 0}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border-token text-dark transition-opacity hover:bg-elevated disabled:cursor-not-allowed disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border-token text-dark transition-opacity hover:bg-elevated disabled:cursor-not-allowed disabled:opacity-30"
           >
             <span aria-hidden="true">←</span>
           </button>
@@ -133,7 +133,7 @@ export function Process() {
             onClick={next}
             aria-label="Next component"
             disabled={active === COMPONENTS.length - 1}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border-token text-dark transition-opacity hover:bg-elevated disabled:cursor-not-allowed disabled:opacity-30"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border-token text-dark transition-opacity hover:bg-elevated disabled:cursor-not-allowed disabled:opacity-30"
           >
             <span aria-hidden="true">→</span>
           </button>

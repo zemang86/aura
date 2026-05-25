@@ -11,8 +11,8 @@ const LOGO_SRC =
 const NAV_LINKS: Array<{ label: string; href: string }> = [
   { label: "Technology", href: "/technology" },
   { label: "Ecosystem", href: "/ecosystem" },
-  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
 ];
 
 type HUDProps = {

@@ -1,8 +1,11 @@
 export function MarketingFooter() {
   return (
     <footer className="m-foot">
+      <div className="foot-inner">
       <h2 className="foot-display">
-        Build the <em>encrypted</em> version of everything.
+        The Glass House Era is <em>over.</em>
+        <br />
+        Join the Encrypted Everything Movement.
       </h2>
 
       <div className="foot-row">
@@ -91,6 +94,7 @@ export function MarketingFooter() {
         <span>
           <b>Mainnet</b> beta · v 0.9
         </span>
+      </div>
       </div>
     </footer>
   );

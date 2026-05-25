@@ -73,7 +73,7 @@ export function Process() {
 
   return (
     <section className="w-full bg-white py-[56px] md:py-[100px]">
-      <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-12 px-5">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-12 px-5">
         <div className="flex flex-col items-center gap-6">
           <h2 className="text-h2 max-w-[700px] text-center text-dark">
             Encryption at Solana speed
@@ -92,12 +92,12 @@ export function Process() {
 
         <div
           ref={scrollRef}
-          className="flex w-full snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex w-full snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:snap-none md:pb-0"
         >
           {COMPONENTS.map((c) => (
             <article
               key={c.title}
-              className="flex min-w-[85%] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-6 md:p-8 sm:min-w-[60%] md:min-w-[380px]"
+              className="flex min-w-[85%] shrink-0 snap-center flex-col gap-4 border border-border-token bg-elevated p-6 sm:min-w-[60%] md:min-w-0 md:shrink md:snap-align-none md:p-7"
             >
               <h3 className="text-h3-24 text-dark-text">{c.title}</h3>
               <p className="text-p16 text-muted-text">{c.body}</p>
@@ -105,7 +105,7 @@ export function Process() {
           ))}
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 md:hidden">
           <button
             type="button"
             onClick={prev}

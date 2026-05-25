@@ -36,8 +36,12 @@ export function Features() {
           </p>
         </div>
 
+        <Link href="/about" className="m-btn-primary">
+          Find out more <span className="arr">→</span>
+        </Link>
+
         <div className="flex w-full flex-col items-center gap-9">
-          <div className="flex flex-col items-center gap-4 px-6">
+          <div className="flex flex-col items-center gap-6 px-6">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-1 opacity-75" />
@@ -47,6 +51,9 @@ export function Features() {
                 Live · Last 30 days
               </p>
             </div>
+            <h3 className="text-h2 max-w-[800px] text-dark">
+              The Invisible Tax, in real numbers
+            </h3>
             <p className="text-p16 max-w-[626px] text-center text-dark/70">
               Real-time MEV extraction on Solana over the past 30 days. Every
               number below is happening to a real wallet right now.
@@ -87,13 +94,6 @@ export function Features() {
             {LAST_UPDATED}
           </p>
         </div>
-
-        <Link
-          href="/about"
-          className="text-body inline-flex h-10 w-60 items-center justify-center rounded-[10px] bg-[rgb(51,51,51)] text-white transition-colors hover:bg-[rgb(51,51,51)]/85"
-        >
-          Find out more
-        </Link>
       </div>
     </section>
   );

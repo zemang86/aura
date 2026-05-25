@@ -915,7 +915,6 @@ body {
 .m-roadmap,
 .caps,
 .refs,
-.m-foot,
 .page-hero,
 .m-section,
 .cta-block,
@@ -923,6 +922,17 @@ body {
   max-width: var(--m-page-max);
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Footer spans full viewport — but its content is wrapped in .foot-inner
+ * to stay aligned with the other sections' --m-page-max content width. */
+.m-foot {
+  max-width: none;
+}
+.foot-inner {
+  max-width: var(--m-page-max);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* COVER */
@@ -1848,7 +1858,7 @@ body {
 
 /* FOOT */
 .m-foot {
-  padding: 120px 24px 60px;
+  padding: 120px 0 60px;
   border-top: 1px solid var(--rule);
   position: relative;
   background: var(--ink);
@@ -1856,12 +1866,13 @@ body {
 .foot-display {
   font-family: var(--m-sans);
   font-weight: 800;
-  font-size: clamp(40px, 6vw, 96px);
-  line-height: 0.94;
-  letter-spacing: -0.035em;
+  font-size: clamp(20px, 3vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--paper);
-  margin: 0 0 64px;
-  max-width: 18ch;
+  margin: 0 auto 64px;
+  max-width: 32ch;
+  text-align: center;
   text-wrap: balance;
 }
 .foot-display em {
@@ -1883,7 +1894,10 @@ body {
     grid-template-columns: 1fr;
   }
   .m-foot {
-    padding: 80px 18px 50px;
+    padding: 80px 0 50px;
+  }
+  .foot-inner {
+    padding: 0 18px;
   }
 }
 .foot-col h4 {

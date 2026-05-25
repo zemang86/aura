@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LightButton } from "@/components/light-button";
+import { CipherStream } from "@/components/marketing/cipher-stream";
 
 const HERO_BG =
   "https://framerusercontent.com/images/8JwCpYZqtAGXFuwcoQydgn88ctQ.jpg";
@@ -16,7 +16,25 @@ export function Hero() {
         className="object-cover"
         unoptimized
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dark/40 via-transparent to-dark/40" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/30 to-dark/80" />
+
+      {/* Cipher stream — atmospheric matrix of live encrypted ops behind the title */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pointerEvents: "none",
+          zIndex: 1,
+          opacity: 0.35,
+        }}
+      >
+        <CipherStream rows={16} />
+      </div>
+
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col items-center gap-12 px-5 md:px-9 pb-20">
         <div className="flex flex-col items-center gap-5">
           <h1 className="text-h1 max-w-[900px] text-dark-text">
@@ -29,21 +47,28 @@ export function Hero() {
             default. Verifiable by design.
           </p>
         </div>
-        <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-5">
-          <LightButton
+        <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
+          <a
+            className="m-btn-primary"
             href="https://docs.afhe.io"
-            variant="secondary"
-            external
+            target="_blank"
+            rel="noreferrer noopener"
           >
-            Read the docs
-          </LightButton>
-          <LightButton
+            Read the docs <span className="arr">→</span>
+          </a>
+          <a
+            className="m-btn-outline"
+            style={{
+              padding: "18px 28px",
+              fontSize: 13,
+              letterSpacing: "0.16em",
+            }}
             href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"
-            variant="secondary"
-            external
+            target="_blank"
+            rel="noreferrer noopener"
           >
-            Start Building
-          </LightButton>
+            Start building <span className="arr">→</span>
+          </a>
         </div>
       </div>
     </section>

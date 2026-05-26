@@ -98,10 +98,15 @@ export default function EcosystemPage() {
           <div className="m-section-head">
             <h2>What you can build.</h2>
             <div className="right">
-              Aura FHE primitives unlock entire categories of applications that
-              were fundamentally impossible on transparent rails. Here&rsquo;s
-              the landscape that becomes possible when computation is truly
-              private.
+              <div className="frost-card">
+                <p>
+                  Aura FHE primitives unlock entire categories of applications
+                  that were{" "}
+                  <strong>fundamentally impossible on transparent rails.</strong>{" "}
+                  Here&rsquo;s the landscape that becomes possible when
+                  computation is truly private.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -122,9 +127,14 @@ export default function EcosystemPage() {
               Four <em>shipping</em> applications.
             </h2>
             <div className="right">
-              Everything in our ecosystem is either live today, in active
-              development with institutional partners, or immediately buildable
-              using the current SDK.
+              <div className="frost-card">
+                <p>
+                  Everything in our ecosystem is either{" "}
+                  <strong>live today</strong>, in active development with
+                  institutional partners, or immediately buildable using the
+                  current SDK.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -179,12 +189,16 @@ export default function EcosystemPage() {
           <div className="m-section-head">
             <h2>Common questions.</h2>
             <div className="right">
-              If you&rsquo;re evaluating Aura for an integration and have
-              something specific that isn&rsquo;t covered here, mail{" "}
-              <a className="m-link-inline" href="mailto:hello@afhe.io">
-                hello@afhe.io
-              </a>
-              .
+              <div className="frost-card">
+                <p>
+                  If you&rsquo;re evaluating Aura for an integration and have
+                  something specific that isn&rsquo;t covered here, mail{" "}
+                  <a className="m-link-inline" href="mailto:hello@afhe.io">
+                    hello@afhe.io
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
 

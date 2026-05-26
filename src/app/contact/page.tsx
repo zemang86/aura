@@ -80,9 +80,13 @@ export default function ContactPage() {
           <div className="m-section-head">
             <h2>Send us a message.</h2>
             <div className="right">
-              We typically respond within two business days. For urgent
-              partnership conversations, mention &ldquo;urgent&rdquo; in the
-              topic.
+              <div className="frost-card">
+                <p>
+                  We typically respond within two business days. For urgent
+                  partnership conversations, mention{" "}
+                  <strong>&ldquo;urgent&rdquo;</strong> in the topic.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -97,8 +101,12 @@ export default function ContactPage() {
           <div className="m-section-head">
             <h2>Find us in the wild.</h2>
             <div className="right">
-              For real-time questions and ecosystem updates, our community
-              channels are the fastest path in.
+              <div className="frost-card">
+                <p>
+                  For real-time questions and ecosystem updates, our community
+                  channels are <strong>the fastest path in.</strong>
+                </p>
+              </div>
             </div>
           </div>
 

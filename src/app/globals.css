@@ -2434,6 +2434,64 @@ body.marketing-v2 a {
   }
 }
 
+/* Frosted callout card — soft-edge glass treatment used to highlight
+ * a key passage inside an .m-section-head .right column. */
+.frost-card {
+  position: relative;
+  padding: 24px 26px;
+  border: 1px solid rgba(232, 226, 212, 0.10);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(232, 226, 212, 0.04),
+      rgba(232, 226, 212, 0.015) 60%,
+      rgba(255, 107, 61, 0.04)
+    );
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  overflow: hidden;
+}
+.frost-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--coral);
+  opacity: 0.65;
+}
+.frost-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(255, 107, 61, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 40%);
+}
+.frost-card > * {
+  position: relative;
+  z-index: 1;
+}
+.frost-card p {
+  color: var(--bone);
+  font-family: var(--m-sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+.frost-card p + p {
+  margin-top: 12px;
+}
+.frost-card strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .frost-card {
+    padding: 20px 22px;
+  }
+}
+
 /* KPI row */
 .kpi-row {
   display: grid;

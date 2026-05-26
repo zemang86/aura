@@ -90,9 +90,16 @@ export default function TechnologyPage() {
               Different mathematics. <em>Unmatched</em> performance.
             </h2>
             <div className="right">
-              Aura is the only protocol delivering FHE at the speed of a modern
-              blockchain. We abandoned the legacy lattice playbook entirely to
-              build something no other Web3 project has shipped.
+              <div className="frost-card">
+                <p>
+                  Aura is the only protocol delivering FHE at the speed of a
+                  modern blockchain.{" "}
+                  <strong>
+                    We abandoned the legacy lattice playbook entirely
+                  </strong>{" "}
+                  to build something no other Web3 project has shipped.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -147,17 +154,21 @@ export default function TechnologyPage() {
           <div className="m-section-head">
             <h2>Existing FHE cannot run on Solana.</h2>
             <div className="right">
-              <p>
-                Lattice-based FHE schemes require a refresh process called
-                bootstrapping — a structural bottleneck.
-              </p>
-              <p>
-                Every encrypted operation introduces noise; the ciphertext must
-                be homomorphically decrypted and re-encrypted. The fastest
-                production implementations measure bootstrapping in tens of
-                milliseconds per gate. A 400 ms Solana block cannot accommodate
-                this.
-              </p>
+              <div className="frost-card">
+                <p>
+                  Lattice-based FHE schemes require a refresh process called
+                  bootstrapping — <strong>a structural bottleneck.</strong>
+                </p>
+                <p>
+                  Every encrypted operation introduces noise; the ciphertext
+                  must be homomorphically decrypted and re-encrypted. The
+                  fastest production implementations measure bootstrapping in
+                  tens of milliseconds per gate.{" "}
+                  <strong>
+                    A 400&nbsp;ms Solana block cannot accommodate this.
+                  </strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -182,8 +193,13 @@ export default function TechnologyPage() {
               Four pillars of the <em>LUT-FHE</em> scheme.
             </h2>
             <div className="right">
-              The architectural commitments that let Aura clear a Solana block
-              while every other scheme is still bootstrapping.
+              <div className="frost-card">
+                <p>
+                  The architectural commitments that let Aura{" "}
+                  <strong>clear a Solana block</strong> while every other
+                  scheme is still bootstrapping.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -242,9 +258,13 @@ export default function TechnologyPage() {
           <div className="m-section-head">
             <h2>The coprocessor model.</h2>
             <div className="right">
-              Validators verify cryptographic proofs of correctness — they do
-              not run the FHE workload. Solana&rsquo;s native throughput stays
-              intact.
+              <div className="frost-card">
+                <p>
+                  Validators verify cryptographic proofs of correctness —{" "}
+                  <strong>they do not run the FHE workload.</strong>{" "}
+                  Solana&rsquo;s native throughput stays intact.
+                </p>
+              </div>
             </div>
           </div>
           <div className="m-prose">
@@ -271,8 +291,15 @@ export default function TechnologyPage() {
               Three lines to <em>total</em> privacy.
             </h2>
             <div className="right">
-              The AURA SDK exposes three primitives. Drop them into any Solana
-              program; ship a confidential version in under an hour.
+              <div className="frost-card">
+                <p>
+                  The AURA SDK exposes three primitives. Drop them into any
+                  Solana program;{" "}
+                  <strong>
+                    ship a confidential version in under an hour.
+                  </strong>
+                </p>
+              </div>
             </div>
           </div>
 

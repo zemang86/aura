@@ -134,10 +134,17 @@ export default function AboutPage() {
               The <em>Glass House</em> era is over.
             </h2>
             <div className="right">
-              Aura FHE is the culmination of more than a decade of intensive
-              cryptographic research. The public nature of blockchain ledgers
-              has become the structural ceiling for global financial adoption.
-              Our mission is to permanently end the Glass House era.
+              <div className="frost-card">
+                <p>
+                  Aura FHE is the culmination of more than a decade of intensive
+                  cryptographic research. The public nature of blockchain
+                  ledgers has become the structural ceiling for global financial
+                  adoption.{" "}
+                  <strong>
+                    Our mission is to permanently end the Glass House era.
+                  </strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -163,8 +170,12 @@ export default function AboutPage() {
           <div className="m-section-head">
             <h2>What we believe.</h2>
             <div className="right">
-              Four commitments that shape every line of the protocol. None of
-              them are negotiable.
+              <div className="frost-card">
+                <p>
+                  Four commitments that shape every line of the protocol.{" "}
+                  <strong>None of them are negotiable.</strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -189,9 +200,15 @@ export default function AboutPage() {
               Architects of the <em>encrypted</em> future.
             </h2>
             <div className="right">
-              A collective of cryptographers, protocol engineers, builders and
-              DeFi natives. 12+ years of research in fully homomorphic
-              encryption.
+              <div className="frost-card">
+                <p>
+                  A collective of cryptographers, protocol engineers, builders
+                  and DeFi natives.{" "}
+                  <strong>
+                    12+ years of research in fully homomorphic encryption.
+                  </strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -218,12 +235,16 @@ export default function AboutPage() {
           <div className="m-section-head">
             <h2>Join the community.</h2>
             <div className="right">
-              The fastest path in is Discord. For long-form, follow us on X. For
-              partnerships and press, mail{" "}
-              <a className="m-link-inline" href="mailto:hello@afhe.io">
-                hello@afhe.io
-              </a>
-              .
+              <div className="frost-card">
+                <p>
+                  <strong>The fastest path in is Discord.</strong> For
+                  long-form, follow us on X. For partnerships and press, mail{" "}
+                  <a className="m-link-inline" href="mailto:hello@afhe.io">
+                    hello@afhe.io
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
 
@@ -251,9 +272,15 @@ export default function AboutPage() {
               Submit your <em>app.</em>
             </h2>
             <div className="right">
-              Tell us what you&rsquo;re building. We&rsquo;ll get back with
-              integration support, technical resources, and ecosystem
-              opportunities.
+              <div className="frost-card">
+                <p>
+                  Tell us what you&rsquo;re building. We&rsquo;ll get back with{" "}
+                  <strong>
+                    integration support, technical resources, and ecosystem
+                    opportunities.
+                  </strong>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -268,7 +295,12 @@ export default function AboutPage() {
           <div className="m-section-head">
             <h2>Where to next.</h2>
             <div className="right">
-              Two paths in: the math, or the apps. Both lead to the same place.
+              <div className="frost-card">
+                <p>
+                  Two paths in: the math, or the apps.{" "}
+                  <strong>Both lead to the same place.</strong>
+                </p>
+              </div>
             </div>
           </div>
 

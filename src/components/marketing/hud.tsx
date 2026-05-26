@@ -111,14 +111,9 @@ export function HUD({ variant }: HUDProps = {}) {
             {l.label}
           </Link>
         ))}
-        <a
-          className="m-btn-outline"
-          href="https://docs.afhe.io"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <Link className="m-btn-outline" href="/docs">
           Read Docs <span className="arr">→</span>
-        </a>
+        </Link>
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -196,16 +191,14 @@ export function HUD({ variant }: HUDProps = {}) {
                 </li>
               ))}
               <li>
-                <a
-                  href="https://docs.afhe.io"
-                  target="_blank"
-                  rel="noreferrer noopener"
+                <Link
+                  href="/docs"
                   onClick={() => setMenuOpen(false)}
                   className="hud-menu-link"
                 >
                   Documentation
                   <span className="arr">→</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CHIPS = [
   "Private DEXs",
   "MEV-resistant AMMs",
@@ -39,14 +41,9 @@ export function MegaHeadline() {
             </b>{" "}
             Privacy as a mathematical guarantee, not a policy.
           </p>
-          <a
-            className="mega-cta"
-            href="https://docs.afhe.io"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <Link className="mega-cta" href="/docs">
             Read the docs <span className="arr">→</span>
-          </a>
+          </Link>
         </div>
       </div>
 

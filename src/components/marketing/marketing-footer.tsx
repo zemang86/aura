@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function MarketingFooter() {
   return (
     <footer className="m-foot">
@@ -13,22 +15,14 @@ export function MarketingFooter() {
           <h4>For builders</h4>
           <ul>
             <li>
-              <a
-                href="https://docs.afhe.io"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
+              <Link href="/docs">
                 Documentation <span className="arr">→</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="https://docs.afhe.io"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Whitepaper PDF <span className="arr">→</span>
-              </a>
+              <Link href="/docs/whitepaper">
+                Whitepaper <span className="arr">→</span>
+              </Link>
             </li>
             <li>
               <a

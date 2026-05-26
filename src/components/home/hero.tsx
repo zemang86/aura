@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CipherStream } from "@/components/marketing/cipher-stream";
 
 const HERO_BG =
@@ -57,14 +58,9 @@ export function Hero() {
           </p>
         </div>
         <div className="hero-cta-row flex w-full flex-row items-stretch justify-center gap-2 sm:w-auto sm:flex-wrap sm:items-center sm:gap-4">
-          <a
-            className="m-btn-primary"
-            href="https://docs.afhe.io"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <Link className="m-btn-primary" href="/docs">
             Read the docs <span className="arr">→</span>
-          </a>
+          </Link>
           <a
             className="m-btn-outline hero-btn-lg"
             href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"

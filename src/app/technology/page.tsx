@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "LUT-FHE Technology | Bootstrap-Free Encryption | Aura FHE",
@@ -306,14 +307,9 @@ export default function TechnologyPage() {
             landscape.
           </p>
           <div className="row">
-            <a
-              className="m-btn-primary"
-              href="https://docs.afhe.io/whitepaper/"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <Link className="m-btn-primary" href="/docs/whitepaper">
               Read the whitepaper <span className="arr">→</span>
-            </a>
+            </Link>
             <a
               className="m-btn-outline"
               href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"

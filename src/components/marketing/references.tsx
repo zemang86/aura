@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function References() {
   return (
     <section className="refs">
@@ -18,14 +20,9 @@ export function References() {
             results that the protocol stands on. Reading prerequisite:
             undergraduate lattice cryptography.
           </p>
-          <a
-            className="ref-link"
-            href="https://docs.afhe.io"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Open PDF <span className="arr">→</span>
-          </a>
+          <Link className="ref-link" href="/docs/whitepaper">
+            Read it <span className="arr">→</span>
+          </Link>
         </div>
         <div className="ref">
           <div className="ref-tag">Reference implementation</div>
@@ -48,7 +45,7 @@ export function References() {
         <div className="ref">
           <div className="ref-tag">Docs &amp; cookbook</div>
           <h3>
-            docs.afhe.io <em>— quickstart in 3 minutes</em>
+            Documentation <em>— quickstart in 3 minutes</em>
           </h3>
           <p>
             From{" "}
@@ -64,14 +61,9 @@ export function References() {
             to your first encrypted transfer. Recipes for every primitive on
             the page above.
           </p>
-          <a
-            className="ref-link"
-            href="https://docs.afhe.io"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <Link className="ref-link" href="/docs">
             Read the docs <span className="arr">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -3287,6 +3287,44 @@ body.marketing-v2 .prose-article pre {
 body.marketing-v2 .prose-article img {
   border: 1px solid var(--rule);
 }
+body.marketing-v2 .prose-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--m-sans);
+  font-size: 14px;
+  margin: 8px 0;
+}
+body.marketing-v2 .prose-article th,
+body.marketing-v2 .prose-article td {
+  border: 1px solid var(--rule);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+body.marketing-v2 .prose-article th {
+  background: var(--ink-2);
+  color: var(--paper);
+  font-weight: 600;
+  font-family: var(--m-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+body.marketing-v2 .prose-article blockquote {
+  border-left: 3px solid var(--coral);
+  padding: 8px 0 8px 18px;
+  margin: 8px 0;
+  color: var(--bone-dim);
+  font-style: normal;
+}
+body.marketing-v2 .prose-article blockquote strong {
+  color: var(--paper);
+}
+body.marketing-v2 .prose-article hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 32px 0;
+}
 
 /* 404 */
 .m-404 {
@@ -3498,5 +3536,244 @@ body.marketing-v2 .prose-article img {
   .cta-block-inner {
     padding-left: 16px;
     padding-right: 16px;
+  }
+}
+
+/* ============================================================
+ * Docs (/docs)
+ * Two-column shell — sticky sidebar + main prose column.
+ * Reuses .prose-article for body styling.
+ * ============================================================ */
+.docs-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 32px 100px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 64px;
+}
+.docs-sidebar {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  border-right: 1px solid var(--rule);
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.docs-sidebar-home {
+  display: block;
+  font-family: var(--m-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 20px;
+  transition: color 0.15s ease;
+}
+.docs-sidebar-home:hover,
+.docs-sidebar-home.active {
+  color: var(--coral);
+}
+.docs-sidebar-group + .docs-sidebar-group {
+  margin-top: 28px;
+}
+.docs-sidebar-group-title {
+  font-family: var(--m-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  margin-bottom: 10px;
+}
+.docs-sidebar-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.docs-sidebar-link {
+  display: block;
+  padding: 7px 10px;
+  font-family: var(--m-sans);
+  font-size: 14px;
+  color: var(--bone);
+  border-left: 2px solid transparent;
+  margin-left: -10px;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.docs-sidebar-link:hover {
+  color: var(--paper);
+  background: var(--ink-2);
+}
+.docs-sidebar-link.active {
+  color: var(--coral);
+  border-left-color: var(--coral);
+  background: rgba(255, 107, 61, 0.05);
+}
+
+.docs-main {
+  min-width: 0;
+  max-width: 760px;
+}
+.docs-header {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.docs-header .crumbs {
+  font-family: var(--m-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  margin-bottom: 14px;
+}
+.docs-header .crumbs a {
+  color: var(--bone-dim);
+  transition: color 0.15s ease;
+}
+.docs-header .crumbs a:hover {
+  color: var(--coral);
+}
+.docs-header h1 {
+  font-family: var(--m-sans);
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--paper);
+  margin: 0;
+}
+.docs-header .deck {
+  font-family: var(--m-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  margin: 14px 0 0;
+  max-width: 65ch;
+}
+
+.docs-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.docs-grid-card {
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  padding: 20px 22px;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.docs-grid-card:hover {
+  border-color: rgba(255, 107, 61, 0.4);
+}
+.docs-grid-title {
+  font-family: var(--m-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 14px;
+}
+.docs-grid-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.docs-grid-card li + li {
+  margin-top: 4px;
+}
+.docs-grid-card li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  font-family: var(--m-sans);
+  font-size: 14.5px;
+  color: var(--bone);
+  transition: color 0.15s ease;
+}
+.docs-grid-card li a:hover {
+  color: var(--coral);
+}
+.docs-grid-card li a .arr {
+  font-family: var(--m-mono);
+  font-size: 12px;
+  color: var(--bone-dim);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.docs-grid-card li a:hover .arr {
+  color: var(--coral);
+  transform: translateX(2px);
+}
+
+.docs-pager {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.docs-pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+.docs-pager-link.next {
+  text-align: right;
+}
+.docs-pager-link:hover {
+  border-color: rgba(255, 107, 61, 0.4);
+  background: var(--ink-2);
+}
+.docs-pager-dir {
+  font-family: var(--m-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+.docs-pager-link:hover .docs-pager-dir {
+  color: var(--coral);
+}
+.docs-pager-title {
+  font-family: var(--m-sans);
+  font-size: 15px;
+  color: var(--paper);
+  font-weight: 500;
+}
+
+@media (max-width: 880px) {
+  .docs-shell {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 120px 18px 60px;
+  }
+  .docs-sidebar {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+  .docs-header h1 {
+    font-size: 32px;
+  }
+  .docs-pager {
+    grid-template-columns: 1fr;
+  }
+  .docs-pager-link.next {
+    text-align: left;
   }
 }

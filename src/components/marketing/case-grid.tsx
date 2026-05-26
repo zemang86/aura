@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 const CASE_ART: Record<string, ReactNode> = {
@@ -326,13 +327,7 @@ export function CaseGrid() {
         <div className="right">
           <b>06 / Built on Aura</b>
           Real reference implementations —{" "}
-          <a
-            href="https://docs.afhe.io"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            docs.afhe.io
-          </a>{" "}
+          <Link href="/docs">documentation</Link>{" "}
           ·{" "}
           <a
             href="https://github.com/aurafhe"

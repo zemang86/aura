@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { faqSchema } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = {
@@ -208,14 +209,9 @@ export default function EcosystemPage() {
             Solana app this week.
           </p>
           <div className="row">
-            <a
-              className="m-btn-primary"
-              href="https://docs.afhe.io"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <Link className="m-btn-primary" href="/docs">
               Read the docs <span className="arr">→</span>
-            </a>
+            </Link>
             <a
               className="m-btn-outline"
               href="https://discord.gg/afhe"

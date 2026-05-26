@@ -6,9 +6,9 @@
  */
 
 const SITE_URL = "https://afhe.io";
-const SITE_NAME = "AFHE";
+const SITE_NAME = "Aura FHE";
 const DESCRIPTION =
-  "Privacy Infrastructure for the Post-Quantum Era. AFHE enables computation on encrypted data without decryption, 100x faster than existing FHE solutions.";
+  "Aura FHE is the encrypted compute layer for the Solana Virtual Machine. Bootstrap-free fully homomorphic encryption, ~1000× faster than existing FHE schemes, post-quantum secure via MQ-hardness.";
 const LOGO_URL = "https://afhe.io/logo.png";
 const TWITTER_HANDLE = "AfheLabs";
 const LINKEDIN_URL = "https://www.linkedin.com/company/aura-fhe";
@@ -19,7 +19,7 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  alternateName: "Aura Fully Homomorphic Encryption",
+  alternateName: ["AFHE", "Aura Fully Homomorphic Encryption", "AURA FHE"],
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -69,12 +69,12 @@ export const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "@id": `${SITE_URL}/#software`,
-  name: "AFHE (Aura Fully Homomorphic Encryption)",
+  name: "Aura FHE",
   applicationCategory: "SecurityApplication",
   applicationSubCategory: "Cryptography",
   operatingSystem: "Cross-platform",
   description:
-    "Privacy infrastructure enabling computation on encrypted data without decryption. 100x faster than existing FHE solutions with post-quantum security through MQ-hardness.",
+    "Encrypted compute layer for the Solana Virtual Machine. Bootstrap-free fully homomorphic encryption built on a novel LUT-FHE scheme over Multivariate Quadratic structure — post-quantum secure, chain-speed performant, and verifiable on-chain.",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -82,18 +82,19 @@ export const softwareSchema = {
     availability: "https://schema.org/ComingSoon",
   },
   featureList: [
-    "100x faster than existing FHE implementations",
+    "~1000× speedup over TFHE-based schemes on typical arithmetic workloads",
+    "Integer addition in ~0.04μs (vs Zama's ~50ms gate evaluation)",
     "~0.1 second verification time",
-    "50 tokens/second encrypted LLM inference on consumer hardware",
-    "Post-quantum security via MQ-hardness (proven NP-hard)",
-    "Blockchain-agnostic coprocessor model",
-    "Consumer-grade hardware support (no enterprise GPU required)",
-    "13,500x speedup vs Microsoft CKKS for CNN inference",
-    "84,500x speedup vs Zama TFHE for CNN inference",
-    "True end-to-end encryption without threshold network dependencies",
+    "Bootstrap-free architecture — no noise accumulation, no ciphertext refresh",
+    "Post-quantum security via MQ-hardness (Garey & Johnson 1979, proven NP-hard)",
+    "Coprocessor architecture — chain-agnostic by design, ships first on Solana",
+    "3.7 MB WASM runtime",
+    "AURA SDK v5 in production — three-line integration for any Solana program",
+    "Verifiable correctness proof on every coprocessor output",
   ],
   provider: { "@id": `${SITE_URL}/#organization` },
-  releaseNotes: "Mainnet planned for Q1-Q2 2026",
+  releaseNotes:
+    "AURA SDK v5 in production. AuraPoly live on Solana. Token Generation Event (TGE) targeted for Q3 2026; coprocessor mining network launches Q4 2026.",
 };
 
 export const faqSchema = {
@@ -106,7 +107,7 @@ export const faqSchema = {
       name: "What is Aura FHE?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Aura FHE is a protocol that enables computation on encrypted data without ever decrypting it. It's a privacy-preserving computation protocol that enables data to be processed while remaining fully encrypted — end to end, at all times.",
+        text: "Aura FHE is the encrypted compute layer for the Solana Virtual Machine. It runs Solana programs on data that stays sealed end-to-end using a novel LUT-FHE scheme over Multivariate Quadratic structure. The protocol delivers privacy as a mathematical guarantee — not a policy, access control, or trusted enclave.",
       },
     },
     {
@@ -114,7 +115,7 @@ export const faqSchema = {
       name: "What is Fully Homomorphic Encryption (FHE)?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Fully Homomorphic Encryption (FHE) is a revolutionary form of encryption that allows computations to be performed on encrypted data without decrypting it first. The result of the computation remains encrypted and can only be decrypted by the data owner. This enables truly privacy-preserving computation where sensitive data never needs to be exposed, even during processing.",
+        text: "Fully Homomorphic Encryption (FHE) is a form of encryption that allows computations to be performed directly on encrypted data without decrypting it first. The result of the computation remains encrypted and can only be opened by the data owner. This enables truly privacy-preserving computation where sensitive data is never exposed — not at rest, not in transit, and not during processing.",
       },
     },
     {
@@ -122,15 +123,15 @@ export const faqSchema = {
       name: "How is Aura FHE different from zero-knowledge proofs?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Zero-knowledge proofs (ZK) prove that a computation happened correctly without revealing the underlying data. Aura FHE is fundamentally different — it performs the computation directly on encrypted data. ZK verifies correctness; FHE enables private computation. They solve different problems and can be complementary technologies.",
+        text: "Zero-knowledge proofs (ZK) prove that a computation happened correctly without revealing the underlying inputs. Aura FHE performs the computation directly on encrypted data and returns an encrypted result. ZK verifies correctness; FHE enables private computation. They solve different problems and are often complementary — every Aura coprocessor output ships with a cryptographic correctness proof that validators verify without decrypting.",
       },
     },
     {
       "@type": "Question",
-      name: "How fast is AFHE compared to other FHE solutions?",
+      name: "How fast is Aura FHE compared to other FHE solutions?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AFHE is 100x faster than existing FHE implementations. While competitors like Zama's TFHE take 'seconds to minutes' per operation, AFHE achieves approximately 0.1 second verification time. In benchmark tests, AFHE achieves 13,500x speedup vs Microsoft CKKS and 84,500x speedup vs Zama TFHE for CNN model inference. AFHE can also perform encrypted LLM inference at 50 tokens per second on consumer-grade hardware.",
+        text: "Aura FHE delivers approximately 1000× speedup over TFHE-based alternatives across typical arithmetic workloads. Integer addition executes in roughly 0.04 microseconds, compared with Zama's ~50ms gate evaluation. Verification time is approximately 0.1 seconds. The architecture is bootstrap-free — the scheme is structurally noise-free, so it never needs the expensive ciphertext refresh that defines other production FHE schemes. Independent benchmark verification is in progress.",
       },
     },
     {
@@ -138,7 +139,7 @@ export const faqSchema = {
       name: "Does Aura FHE require a new blockchain?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Aura FHE operates as a coprocessor and integrates with existing L1s and L2s at the wallet and SDK level. There's no need for chains to migrate or redesign their core architecture. Aura FHE is blockchain-agnostic by design.",
+        text: "No. Aura FHE operates as a coprocessor and integrates with existing chains at the SDK and wallet level. A Solana program submits an encrypted compute request to the Aura coprocessor network, receives a verifiable ciphertext result, and proceeds with on-chain settlement. The architecture is chain-agnostic by design; Aura ships first on Solana, with cross-chain expansion planned from Q1 2027.",
       },
     },
     {
@@ -146,55 +147,55 @@ export const faqSchema = {
       name: "Can Aura FHE support enterprise use cases?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Aura FHE is designed for regulated, compliance-sensitive environments. It enables institutions to operate securely without exposing sensitive data, making it suitable for financial services, healthcare AI, legal applications, and any enterprise requiring privacy-preserving computation.",
+        text: "Yes. The same coprocessor that serves a Solana DEX can serve a hospital, hedge fund, government agency, or AI inference pipeline. The cryptography does not care whether a request originates from a smart contract or a REST API. This makes Aura suitable for regulated, compliance-sensitive environments — financial services, healthcare AI, legal applications, defense, and any enterprise requiring privacy-preserving computation.",
       },
     },
     {
       "@type": "Question",
-      name: "Is AFHE quantum-resistant?",
+      name: "Is Aura FHE quantum-resistant?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, AFHE uses MQ-hardness (Multivariate Quadratic problems) which is mathematically proven to be NP-hard. This security model has withstood over 40 years of cryptanalysis with no practical attacks discovered. AFHE provides 128-bit security against both classical and quantum computers, making it immune to Shor's algorithm and other quantum attacks that threaten traditional encryption.",
+        text: "Yes. Security reduces to the Multivariate Quadratic (MQ) problem, proven NP-hard by Garey and Johnson in 1979. Unlike lattice-based FHE schemes whose hardness rests on conjectured assumptions about Learning With Errors (LWE), MQ-hardness has a stronger theoretical foundation and no known efficient quantum attack. Post-quantum security is a structural property of the scheme, not a future upgrade path.",
       },
     },
     {
       "@type": "Question",
-      name: "What can AFHE be used for?",
+      name: "What can Aura FHE be used for?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AFHE enables entirely new categories of applications: Private DeFi (encrypted trading without MEV, dark pools, private lending without liquidation hunting), Private AI (medical AI with encrypted health data, legal AI preserving attorney-client privilege, financial AI without exposing trading strategies), and any blockchain application requiring computation on sensitive data without exposure. Over $100 trillion in institutional capital is currently blocked from DeFi due to transparency concerns — AFHE solves this.",
+        text: "Aura FHE unlocks application categories that are impossible on transparent blockchains: sealed-bid prediction markets (AuraPoly is live and clearing real flow), encrypted DEXes and dark pools, confidential AI inference on medical, legal, and financial data, private real-world asset tokenization, encrypted DAO governance with sealed voting, and autonomous AI agents with private wallets and encrypted memory. More than $100 trillion in institutional capital is currently blocked from on-chain markets because state is fully visible — Aura is the encryption layer that removes that ceiling.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the AFHE token used for?",
+      name: "What is the AURA token used for?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The AFHE token has four main utilities: (1) Staking to secure the coprocessor network, (2) Governance voting on protocol parameters via veAFHE (vote-escrowed tokens with up to 4x multiplier for 4-year locks), (3) Paying fees for encrypted computation, and (4) Earning rewards for providing compute resources. Total supply is 10 billion tokens with 50% distributed via fair Proof-of-Work mining with Bitcoin-style halving every ~2 years.",
+        text: "AURA is the unit of account for every encrypted computation processed by the network. It has four primary utilities: (1) per-transaction compute fees for FHE workloads called through the SDK, (2) staking by coprocessor miners and validators, (3) wallet balances held by end users to pay for their own encrypted operations, and (4) governance over protocol parameters. Total supply is fixed at 1,000,000,000 AURA with no protocol-level inflation beyond the published mining emission schedule.",
       },
     },
     {
       "@type": "Question",
-      name: "When will AFHE mainnet launch?",
+      name: "When will Aura FHE launch?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AFHE mainnet is planned for Q1-Q2 2026. The roadmap includes: Phase 1 (Q1 2026) — Token launch and veAURA staking; Phase 2 (Q2 2026) — Mining network launch; Phase 3 (Q2 2026) — Wallet beta with SDK integrations; Phase 4 (Q3 2026) — Mainnet with DEX integration; Phase 5 (Q4 2026) — AURA DEX beta with encrypted orderbook; and a native L1 blockchain planned for 2027+.",
+        text: "AURA SDK v5 is already in production, and AuraPoly is clearing real flow on the encrypted compute layer today. The Token Generation Event (TGE) is targeted for Q3 2026, coordinated with the AuraPoly token integration and broader dApp launches. The Proof of Encrypted Work mining protocol launches publicly in Q4 2026 with genesis emissions beginning against real workload mix. Chain-agnostic expansion onto a second chain begins Q1 2027. Each milestone is a demoable, announceable event rather than a promise.",
       },
     },
     {
       "@type": "Question",
-      name: "How does AFHE compare to Zama?",
+      name: "How does Aura FHE compare to Zama?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AFHE offers significant advantages over Zama: 100x faster performance (~0.1s vs seconds-to-minutes), better security model (MQ-hardness proven NP-hard vs LWE which is only believed hard), wallet-level integration (no chain migration required), consumer hardware support (vs enterprise GPU/ASIC requirements), and true end-to-end encryption (vs threshold network dependencies).",
+        text: "Zama has established itself as Ethereum's encryption layer, validated by $130M+ raised and ERC-7984 ratification. Aura FHE targets Solana, where Zama's CPU-based approach (20+ TPS, GPU acceleration targeting 'hundreds of TPS per chain' by Q3 2026) cannot match Solana's 400ms block time. Aura's bootstrap-free LUT-FHE is fundamentally different mathematics designed for chain-speed finance — integer addition in ~0.04μs versus Zama's ~50ms gate evaluation, with a 3.7MB WASM runtime. The two protocols are optimized for different chain regimes rather than directly competing.",
       },
     },
     {
       "@type": "Question",
-      name: "What makes AFHE's technology different?",
+      name: "What makes Aura FHE's technology different?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AFHE's core innovation is ZFHE (ZionFHE), built on 12+ years of cryptographic research. Key technical advantages include: LUT-based acceleration using pre-computed lookup tables that replace expensive polynomial arithmetic, achieving 100x faster boolean operations and bootstrapping; MQ-hardness security model that's mathematically proven NP-hard; and a coprocessor architecture that's blockchain-agnostic, requiring no trusted execution environments.",
+        text: "Aura FHE's core innovation is LUT-FHE — a fully homomorphic encryption scheme built on precomputed lookup tables defined over Multivariate Quadratic structure rather than ring-based ciphertext arithmetic. Two structural advantages follow. First, the scheme is bootstrap-free: the algebraic structure does not accumulate noise, so there is no need for the expensive ciphertext refresh that bottlenecks every lattice-based FHE scheme. Second, security reduces to MQ-hardness, proven NP-hard and post-quantum secure. The construction is the product of more than 12 years of cryptographic research and is protected by 9 patents.",
       },
     },
   ],

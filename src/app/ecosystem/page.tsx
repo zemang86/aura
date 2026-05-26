@@ -60,6 +60,7 @@ const SECTIONS: Section[] = [
     title: "Institutional real-world assets.",
     body: "Tokenized RWAs represent a multi-trillion-dollar market that cannot operate on transparent rails — counterparty positions and settlement amounts are commercially sensitive. Aura provides the encryption layer that makes regulated RWA tokenization viable on Solana. Our primitives also enable encrypted order books for DEXs and dark pools, letting wholesale capital execute without leaking positions to MEV bots watching the mempool.",
     hero: { value: "$100T+", label: "Institutional capital unlocked" },
+    cta: { label: "Protect my swaps", href: "https://shield.afhe.io/" },
   },
   {
     number: "04",

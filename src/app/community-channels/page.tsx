@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Community Channels | Aura FHE",
+  description:
+    "Join the Aura FHE community on Discord, X, LinkedIn, and more.",
+  alternates: { canonical: "/community-channels" },
+};
 
 const CHANNELS: Array<{ label: string; href: string; icon: React.ReactNode }> = [
   {

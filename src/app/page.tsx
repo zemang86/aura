@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Aura FHE — The Encrypted Compute Layer for Solana",
   description:
     "Aura runs Solana programs on data while it stays sealed. Privacy as a mathematical guarantee, not a policy.",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

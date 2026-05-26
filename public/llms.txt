@@ -1,0 +1,55 @@
+# Aura FHE
+
+> Aura FHE is the encrypted compute layer for the Solana Virtual Machine. It runs Solana programs on data that stays sealed end-to-end using fully homomorphic encryption, delivering privacy as a mathematical guarantee rather than a policy.
+
+Aura is developed by Mochi Labs (Singapore HQ) on more than a decade of cryptographic research. The protocol uses a LUT-FHE (lookup-table FHE) architecture that defeats the bootstrapping bottleneck — integer addition at ~0.04μs, ~0.1s verification, and ~50 tokens/second encrypted LLM inference on consumer hardware. Security is based on MQ-hardness (multivariate quadratic problems, proven NP-hard), giving 128-bit post-quantum security.
+
+Aura is blockchain-agnostic by design but is shipping first on Solana. It operates as a coprocessor — no chain migration, no trusted execution environments, no threshold networks. The SDK exposes three primitives (encrypt, compute, decrypt) so a Solana developer can ship a fully confidential application in under an hour.
+
+**Important disclaimer:** Aura FHE is not available to citizens or residents of the United States of America or the People's Republic of China.
+
+## Core pages
+
+- [Homepage](https://afhe.io/): Overview of the encrypted compute layer for Solana.
+- [Technology](https://afhe.io/technology): LUT-FHE architecture, the bootstrapping bottleneck, MQ-hardness security model, performance benchmarks.
+- [Ecosystem](https://afhe.io/ecosystem): Live applications (AuraPoly sealed-bid prediction markets), confidential AI inference, institutional RWA, AURA SDK v5.
+- [About](https://afhe.io/about): Mochi Labs, team, mission, principles, roadmap.
+- [Contact](https://afhe.io/contact): Partnerships, press, integration support.
+
+## Documentation
+
+- [Docs landing](https://afhe.io/docs): In-site documentation hub.
+- [Whitepaper](https://afhe.io/docs/whitepaper): Full technical whitepaper, ten sections covering protocol, tokenomics, roadmap, and security.
+
+## Blog
+
+- [Engineering blog](https://afhe.io/blog): Notes on FHE, private DeFi, and the cryptography behind Aura.
+
+## Key entities
+
+- **Aura FHE** — the protocol (also referred to as AFHE or Aura Fully Homomorphic Encryption).
+- **Mochi Labs** — the company building Aura.
+- **AuraPoly** — flagship production application: sealed-bid prediction markets running on the Aura encrypted compute layer (https://aurapoly.com/).
+- **ZFHE (ZionFHE)** — the underlying cryptographic scheme behind Aura's LUT-FHE.
+- **AURA token** — used for staking (coprocessor network security), governance (veAURA), compute fees, and mining rewards. Total supply 10B; 50% distributed via fair PoW mining with Bitcoin-style halving.
+
+## Comparison points
+
+- vs Zama TFHE — Aura is ~84,500× faster on CNN inference benchmarks, with stronger security (MQ-hardness proven NP-hard vs LWE believed-hard) and no threshold network dependency.
+- vs Microsoft CKKS — Aura is ~13,500× faster on CNN inference benchmarks.
+- vs zero-knowledge proofs — ZK proves a computation happened correctly; FHE performs the computation directly on encrypted data. They are complementary, not substitutes.
+
+## Roadmap (high level)
+
+- Q1 2026 — Token launch and veAURA staking.
+- Q2 2026 — Mining network launch; wallet beta with SDK integrations.
+- Q3 2026 — Mainnet with DEX integration.
+- Q4 2026 — AURA DEX beta with encrypted orderbook.
+- 2027+ — Native L1 blockchain.
+
+## Social
+
+- X / Twitter: https://x.com/AfheLabs
+- LinkedIn: https://www.linkedin.com/company/aura-fhe/
+- Discord: https://discord.gg/afhe
+- GitHub: https://github.com/aurafhe

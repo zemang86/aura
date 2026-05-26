@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "LUT-FHE Technology | Bootstrap-Free Encryption | Aura FHE",
   description:
     "Discover Aura's LUT-FHE architecture. Defeat the bootstrapping bottleneck with 0.04μs integer addition and post-quantum security on the Solana blockchain.",
+  alternates: { canonical: "/technology" },
 };
 
 const HERO_KPIS = [

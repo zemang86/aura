@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Contact | Aura FHE",
   description:
     "Get in touch with Aura FHE for partnerships, press inquiries, or technical integration support.",
+  alternates: { canonical: "/contact" },
 };
 
 const SOCIALS: Array<{ label: string; href: string; icon: React.ReactNode }> = [

@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   description:
     "AFHE enables computation on encrypted data without decryption. 100x faster than existing FHE solutions, post-quantum secure, and built for private DeFi on Solana.",
   metadataBase: new URL("https://afhe.io"),
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "AFHE",

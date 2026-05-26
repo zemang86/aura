@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Private DeFi & AI on Solana | Aura FHE Ecosystem",
   description:
     "Explore the applications powered by Aura FHE. From AuraPoly's sealed-bid prediction markets to confidential AI inference and private real-world assets.",
+  alternates: { canonical: "/ecosystem" },
 };
 
 const USE_CASES = [

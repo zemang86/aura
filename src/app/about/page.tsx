@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "About Aura FHE | Built by Mochi Labs",
   description:
     "Aura FHE is the encrypted compute layer for the Solana Virtual Machine, built by Mochi Labs on more than a decade of cryptographic research to end the Glass House era of on-chain transparency.",
+  alternates: { canonical: "/about" },
 };
 
 const HERO_KPIS = [

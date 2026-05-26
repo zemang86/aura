@@ -63,7 +63,7 @@ export function Hero() {
           </Link>
           <a
             className="m-btn-outline hero-btn-lg"
-            href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"
+            href="https://github.com/aurafhe/aura-sdk"
             target="_blank"
             rel="noreferrer noopener"
           >

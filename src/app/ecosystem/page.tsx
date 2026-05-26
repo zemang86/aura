@@ -68,7 +68,7 @@ const SECTIONS: Section[] = [
     hero: { value: "< 1 hr", label: "To ship a confidential Solana app" },
     cta: {
       label: "Browse the SDK",
-      href: "https://github.com/aurafhe/shield-sdk/tree/shield_sdk",
+      href: "https://github.com/aurafhe/aura-sdk",
     },
   },
 ];

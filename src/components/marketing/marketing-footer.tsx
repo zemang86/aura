@@ -26,7 +26,7 @@ export function MarketingFooter() {
             </li>
             <li>
               <a
-                href="https://github.com/aurafhe/shield-sdk/tree/shield_sdk"
+                href="https://github.com/aurafhe/aura-sdk"
                 target="_blank"
                 rel="noreferrer noopener"
               >

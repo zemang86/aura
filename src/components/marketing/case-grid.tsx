@@ -327,15 +327,7 @@ export function CaseGrid() {
         <div className="right">
           <b>06 / Built on Aura</b>
           Real reference implementations —{" "}
-          <Link href="/docs">documentation</Link>{" "}
-          ·{" "}
-          <a
-            href="https://github.com/aurafhe"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            github.com/AfheLabs
-          </a>
+          <Link href="/docs">documentation</Link>
         </div>
       </div>
       <div className="case-grid">
@@ -351,9 +343,6 @@ export function CaseGrid() {
             <div className="case-art">{CASE_ART[c.id]}</div>
             <h3>{c.title}</h3>
             <p>{c.body}</p>
-            <a className="case-cta" href="/ecosystem">
-              View brief <span className="arr">→</span>
-            </a>
           </article>
         ))}
       </div>
